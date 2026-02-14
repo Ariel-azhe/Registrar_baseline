@@ -1,0 +1,674 @@
+------------------------------------------------------------------------
+python3 regoverviews.py -d COS
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8291  COS    116   ST The Computational Universe
+ 8292  COS    126   QR General Computer Science
+ 8293  COS    126   QR General Computer Science
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 8313  COS    226   QR Algorithms and Data Structures
+ 9032  COS    233   ST An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9033  COS    233   ST An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9037  COS    234      An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9038  COS    236      An Integrated, Quantitative Introduction to the
+                       Natural Sciences IV
+ 8597  COS    306   ST Introduction to Logic Design
+ 9363  COS    314   QR Computer and Electronic Music through
+                       Programming, Performance, and Composition
+ 8320  COS    320      Compiling Techniques
+ 8321  COS    333      Advanced C%Science Programming Techniques
+ 9240  COS    342   QR Introduction to Graph Theory
+ 8322  COS    398      Junior Independent Work (B.S.E. candidates only)
+10009  COS    401      Introduction to Machine Translation
+ 8323  COS    423      Theory of Algorithms
+ 8324  COS    424      Interacting with Data
+ 8325  COS    426      Computer Graphics
+ 8326  COS    433      Cryptography
+ 8327  COS    435      Information Retrieval, Discovery, and Delivery
+ 8328  COS    444   SA Internet Auctions: Theory and Practice
+ 8329  COS    451      Computational Geometry
+ 8330  COS    461      Computer Networks
+ 8331  COS    498      Senior Independent Work (B.S.E. candidates only)
+ 8332  COS    522      Computational Complexity
+10244  COS    586      Topics in STEP: Information Technology and Public
+                       Policy
+ 8333  COS   598A      Advanced Topics in Computer Science: Economic and
+                       Systems Design for Electronic Marketplaces
+ 8334  COS   598B      Advanced Topics in Computer Science: Algorithms
+                       and Complexity
+ 8335  COS   598C      Advanced Topics in Computer Science: Systems for
+                       Large Data
+ 8336  COS   598D      Advanced Topics in Computer Science: Formal
+                       Methods in Networking
+Exit status = 0
+------------------------------------------------------------------------
+python3 regoverviews.py -n 333
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8252  AAS    333   LA Studies in the Classical Tradition: From Athens
+                       to Harlem: Classical Texts and African-American
+                       Writing
+ 8377  ANT    333   SA Contemporary Chinese Society and Culture
+ 8208  CHM    333  STX Oil to Ozone:  Chemistry of the Environment
+ 8209  CHM    333  STX Oil to Ozone:  Chemistry of the Environment
+ 8210  CHM    333  STX Oil to Ozone:  Chemistry of the Environment
+ 8321  COS    333      Advanced C%Science Programming Techniques
+ 8208  ENV    333  STX Oil to Ozone:  Chemistry of the Environment
+ 8209  ENV    333  STX Oil to Ozone:  Chemistry of the Environment
+ 8210  ENV    333  STX Oil to Ozone:  Chemistry of the Environment
+ 8798  FRE    333      Literature and Art in Renaissance France
+10179  WWS    333   SA Claims and Evidence in Policy Research
+Exit status = 0
+------------------------------------------------------------------------
+python3 regoverviews.py -n b
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8057  ARC   262B   ST Structures and the Urban Environment
+ 7944  ARC   506B      Architecture Design Studio
+ 8057  CEE   262B   ST Structures and the Urban Environment
+ 8084  CEE   599B      Special Topics in Environmental Engineering and
+                       Water Resources: Aerosol Observations & Modeling
+ 8197  CHM   304B   ST Organic Chemistry II with Biological Emphasis
+ 8198  CHM   304B   ST Organic Chemistry II with Biological Emphasis
+ 8199  CHM   304B   ST Organic Chemistry II with Biological Emphasis
+ 8200  CHM   304B   ST Organic Chemistry II with Biological Emphasis
+ 8201  CHM   304B   ST Organic Chemistry II with Biological Emphasis
+ 8202  CHM   304B   ST Organic Chemistry II with Biological Emphasis
+ 8203  CHM   304B   ST Organic Chemistry II with Biological Emphasis
+ 8204  CHM   304B   ST Organic Chemistry II with Biological Emphasis
+ 8334  COS   598B      Advanced Topics in Computer Science: Algorithms
+                       and Complexity
+ 8517  ECO   581B      Microeconomic Policy
+ 8057  EGR   262B   ST Structures and the Urban Environment
+ 8633  ELE   539B      Special Topics in Information Sciences and
+                       Systems: Modern Coding Theory
+ 8740  ENV   202B   ST Fundamentals of Environmental Studies: Climate,
+                       Air Pollution, Toxics, and Water
+ 9173  MAE   433B      Automatic Control Systems
+ 9818  NEU   259B   ST Introduction to Cognitive Neuroscience
+ 9818  PSY   259B   ST Introduction to Cognitive Neuroscience
+ 8057  URB   262B   ST Structures and the Urban Environment
+10207  WWS   508B      Econometrics and Public Policy (Basic)
+10211  WWS   512B      Macroeconomic Analysis
+10216  WWS   515B      Program and Policy Evaluation
+10228  WWS   556B      Topics in International Relations: International
+                       Justice
+10233  WWS   562B      Economic Analysis of Development (Basic)
+10239  WWS   572B      Topics in Development: Policy Implications of
+                       Globalization
+10246  WWS   590B      Politics of Inequality and Redistribution (Half-
+                       Term)
+10249  WWS   594B      Topics in Policy Analysis (Half-Term):
+                       Inequalities in Higher Education
+Exit status = 0
+------------------------------------------------------------------------
+python3 regoverviews.py -a Qr
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 7894  APC    350   QR Introduction to Differential Equations
+ 9249  APC    351   QR Topics in Mathematical Modeling: Mathematical
+                       Neuroscience
+ 8024  AST    203   QR The Universe
+ 8025  AST    204   QR Topics in Modern Astronomy
+ 8865  AST    255   QR Life in the Universe
+ 8060  CEE    307   QR Field Ecohydrology
+ 7894  CEE    350   QR Introduction to Differential Equations
+ 8865  CHM    255   QR Life in the Universe
+ 8292  COS    126   QR General Computer Science
+ 8293  COS    126   QR General Computer Science
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 8313  COS    226   QR Algorithms and Data Structures
+ 9363  COS    314   QR Computer and Electronic Music through
+                       Programming, Performance, and Composition
+ 9240  COS    342   QR Introduction to Graph Theory
+ 8430  ECO    202   QR Statistics and Data Analysis for Economics
+ 8431  ECO    202   QR Statistics and Data Analysis for Economics
+ 8432  ECO    202   QR Statistics and Data Analysis for Economics
+ 8433  ECO    202   QR Statistics and Data Analysis for Economics
+ 8434  ECO    202   QR Statistics and Data Analysis for Economics
+ 8435  ECO    202   QR Statistics and Data Analysis for Economics
+ 8436  ECO    202   QR Statistics and Data Analysis for Economics
+ 8437  ECO    202   QR Statistics and Data Analysis for Economics
+ 8456  ECO    313   QR Econometric Applications
+ 8457  ECO    313   QR Econometric Applications
+ 8458  ECO    313   QR Econometric Applications
+ 9423  ECO    364   QR Introduction to Financial Mathematics
+ 8865  EEB    255   QR Life in the Universe
+ 8060  EEB    305   QR Field Ecohydrology
+ 8545  EEB    324   QR Theoretical Ecology
+ 8292  EGR    126   QR General Computer Science
+ 8293  EGR    126   QR General Computer Science
+ 9415  EGR    245   QR Fundamentals of Engineering Statistics
+ 9147  EGR    305   QR Mathematics in Engineering I
+ 8833  FRS    147   QR The Stock Market
+ 8844  FRS    166   QR The Information Revolution: Insights into
+                       Technology, Language, and Biology
+ 8865  GEO    255   QR Life in the Universe
+ 9138  MAE    206   QR Introduction to Engineering Dynamics
+ 9147  MAE    305   QR Mathematics in Engineering I
+ 9194  MAT    102   QR Calculus
+ 9195  MAT    104   QR Calculus
+ 9196  MAT    104   QR Calculus
+ 9197  MAT    104   QR Calculus
+ 9198  MAT    104   QR Calculus
+ 9199  MAT    104   QR Calculus
+ 9200  MAT    190   QR The Magic of Numbers
+ 9210  MAT    200   QR Linear Algebra and Multivariable Calculus for
+                       Economists
+ 9211  MAT    201   QR Multivariable Calculus
+ 9212  MAT    201   QR Multivariable Calculus
+ 9213  MAT    201   QR Multivariable Calculus
+ 9214  MAT    201   QR Multivariable Calculus
+ 9215  MAT    201   QR Multivariable Calculus
+ 9216  MAT    201   QR Multivariable Calculus
+ 9217  MAT    202   QR Linear Algebra with Applications
+ 9218  MAT    202   QR Linear Algebra with Applications
+ 9219  MAT    202   QR Linear Algebra with Applications
+ 9220  MAT    202   QR Linear Algebra with Applications
+ 9221  MAT    202   QR Linear Algebra with Applications
+ 9222  MAT    202   QR Linear Algebra with Applications
+ 9223  MAT    202   QR Linear Algebra with Applications
+ 9224  MAT    202   QR Linear Algebra with Applications
+ 9225  MAT    202   QR Linear Algebra with Applications
+ 9226  MAT    202   QR Linear Algebra with Applications
+ 9227  MAT    202   QR Linear Algebra with Applications
+ 9228  MAT    202   QR Linear Algebra with Applications
+ 9229  MAT    203   QR Advanced Multivariable Calculus
+ 9230  MAT    204   QR Advanced Linear Algebra with Applications
+ 9231  MAT    204   QR Advanced Linear Algebra with Applications
+ 9232  MAT    204   QR Advanced Linear Algebra with Applications
+ 9233  MAT    204   QR Advanced Linear Algebra with Applications
+ 9234  MAT    214   QR Numbers, Equations, and Proofs
+ 9235  MAT    215   QR Analysis in a Single Variable
+ 9236  MAT    217   QR Honors Linear Algebra
+ 9237  MAT    217   QR Honors Linear Algebra
+ 9238  MAT    218   QR Analysis in Several Variables
+ 9239  MAT    218   QR Analysis in Several Variables
+ 9147  MAT    301   QR Mathematics in Engineering I
+ 9240  MAT    306   QR Introduction to Graph Theory
+ 9242  MAT    317   QR Complex Analysis with Applications
+ 9243  MAT    323   QR Algebra
+ 9244  MAT    325   QR Topology
+ 7894  MAT    350   QR Introduction to Differential Equations
+ 9249  MAT    351   QR Topics in Mathematical Modeling: Mathematical
+                       Neuroscience
+ 9363  MUS    314   QR Computer and Electronic Music through
+                       Programming, Performance, and Composition
+ 9415  ORF    245   QR Fundamentals of Engineering Statistics
+ 9423  ORF    335   QR Introduction to Financial Mathematics
+ 9429  ORF    407   QR Fundamentals of Queueing Theory
+ 9430  ORF    418   QR Optimal Learning
+ 9782  PSY    251   QR Quantitative Methods
+10178  WWS    332   QR Quantitative Analysis for Public Policy
+Exit status = 0
+------------------------------------------------------------------------
+python3 regoverviews.py -t intro
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 7859  AFS    200   SA Introduction to African Studies
+ 7894  APC    350   QR Introduction to Differential Equations
+10019  ARC    202   LA Introductory Drawing
+10020  ARC    202   LA Introductory Drawing
+10021  ARC    202   LA Introductory Drawing
+10022  ARC    202   LA Introductory Drawing
+ 7925  ARC    204   LA Introduction to Architectural Design
+ 7926  ARC    204   LA Introduction to Architectural Design
+10023  ARC    328   LA Introductory Painting
+10024  ARC    328   LA Introductory Painting
+10025  ARC    328   LA Introductory Painting
+10026  ARC    328   LA Introductory Painting
+ 7963  ART    101   LA Introduction to the History of Art: Renaissance
+                       to Contemporary
+ 7999  ART    267   LA Intro to Mesoamerican Visual Culture
+ 9596  AST    524      Physics of the Universe: Introduction to
+                       Theoretical Cosmology
+ 8058  CEE    303  STX Introduction to Environmental Engineering
+ 7894  CEE    350   QR Introduction to Differential Equations
+ 8127  CHI    302      Introduction to Classical Chinese II
+ 8128  CHI    302      Introduction to Classical Chinese II
+ 9032  CHM    233   ST An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9033  CHM    233   ST An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9037  CHM    234      An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9038  CHM    236      An Integrated, Quantitative Introduction to the
+                       Natural Sciences IV
+ 8222  CHM    539      Introduction to Chemical Instrumentation
+ 9457  CHV    202   EM Introduction to Moral Philosophy
+ 9475  CLA    205   EC Introduction to Ancient Philosophy
+ 8253  CLA    476      Introduction to Sanskrit II
+ 8261  CLA    564      Problems in Indo-European Linguistics: An
+                       Introduction to the State of the Art
+ 8264  CLG    103      Ancient Greek: An Intensive Introduction
+ 8732  COM    568      Criticism and Theory: Introduction to Literary
+                       and Cultural Theory
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9032  COS    233   ST An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9033  COS    233   ST An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9037  COS    234      An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9038  COS    236      An Integrated, Quantitative Introduction to the
+                       Natural Sciences IV
+ 8597  COS    306   ST Introduction to Logic Design
+ 9240  COS    342   QR Introduction to Graph Theory
+10009  COS    401      Introduction to Machine Translation
+ 8359  DAN    209   LA Introduction to Movement and Dance
+ 8360  DAN    209   LA Introduction to Movement and Dance
+ 8387  EAS    447   SA Introduction to Japanese Linguistics
+ 8388  EAS    447   SA Introduction to Japanese Linguistics
+ 8396  EAS    546      Introduction to Kanbun
+ 8401  ECO    100   SA Introduction to Microeconomics
+ 8402  ECO    100   SA Introduction to Microeconomics
+ 8403  ECO    100   SA Introduction to Microeconomics
+ 8404  ECO    100   SA Introduction to Microeconomics
+ 8405  ECO    100   SA Introduction to Microeconomics
+ 8406  ECO    100   SA Introduction to Microeconomics
+ 8407  ECO    100   SA Introduction to Microeconomics
+ 8408  ECO    100   SA Introduction to Microeconomics
+ 8409  ECO    100   SA Introduction to Microeconomics
+ 8410  ECO    100   SA Introduction to Microeconomics
+ 8411  ECO    100   SA Introduction to Microeconomics
+ 8412  ECO    100   SA Introduction to Microeconomics
+ 8413  ECO    100   SA Introduction to Microeconomics
+ 8414  ECO    100   SA Introduction to Microeconomics
+ 8415  ECO    100   SA Introduction to Microeconomics
+ 8416  ECO    101   SA Introduction to Macroeconomics
+ 8417  ECO    101   SA Introduction to Macroeconomics
+ 8418  ECO    101   SA Introduction to Macroeconomics
+ 8419  ECO    101   SA Introduction to Macroeconomics
+ 8420  ECO    101   SA Introduction to Macroeconomics
+ 8421  ECO    101   SA Introduction to Macroeconomics
+ 8422  ECO    101   SA Introduction to Macroeconomics
+ 8423  ECO    101   SA Introduction to Macroeconomics
+ 8424  ECO    101   SA Introduction to Macroeconomics
+ 8425  ECO    101   SA Introduction to Macroeconomics
+ 8426  ECO    101   SA Introduction to Macroeconomics
+ 8427  ECO    101   SA Introduction to Macroeconomics
+ 8428  ECO    101   SA Introduction to Macroeconomics
+ 8429  ECO    101   SA Introduction to Macroeconomics
+ 9423  ECO    364   QR Introduction to Financial Mathematics
+ 9283  EEB    214   ST Introduction to Cellular and Molecular Biology
+ 8570  EGR    194      An Introduction to Engineering
+ 8571  EGR    194      An Introduction to Engineering
+ 8597  ELE    206   ST Introduction to Logic Design
+ 8618  ELE    396      Introduction to Quantum Computing
+ 8645  ENG    205   LA Introduction to English Literature: From the 14th
+                       to the 18th Century
+ 9127  ENG    213   EC Introduction to Language and Linguistics
+ 8732  ENG    568      Criticism and Theory: Introduction to Literary
+                       and Cultural Theory
+ 8058  ENV    303  STX Introduction to Environmental Engineering
+ 8891  GER    210   EC Introduction to German Philosophy
+ 8894  GER    211   EC Introduction to Media Theory
+ 9115  HIS    402   HA Latin American Studies Seminar: History of
+                       Brazil: An Introduction
+ 9016  HIS    595      Introduction to Historiography of Science
+ 9016  HOS    595      Introduction to Historiography of Science
+ 9032  ISC    233   ST An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9033  ISC    233   ST An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9037  ISC    234      An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9038  ISC    236      An Integrated, Quantitative Introduction to the
+                       Natural Sciences IV
+ 9045  ITA    208      Introduction to Italy Today
+ 7999  LAS    267   LA Intro to Mesoamerican Visual Culture
+ 9115  LAS    402   HA Latin American Studies Seminar: History of
+                       Brazil: An Introduction
+ 9120  LAT    103      Latin: An Intensive Introduction
+ 9127  LIN    201   EC Introduction to Language and Linguistics
+ 8253  LIN    476      Introduction to Sanskrit II
+ 9138  MAE    206   QR Introduction to Engineering Dynamics
+ 9164  MAE    344      Introduction to Bioengineering and Medical
+                       Devices
+ 9240  MAT    306   QR Introduction to Graph Theory
+ 7894  MAT    350   QR Introduction to Differential Equations
+ 9254  MAT    516      Introduction to Algebra
+ 9283  MOL    214   ST Introduction to Cellular and Molecular Biology
+ 9032  MOL    233   ST An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9033  MOL    233   ST An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9037  MOL    234      An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9038  MOL    236      An Integrated, Quantitative Introduction to the
+                       Natural Sciences IV
+ 9316  MUS    103   LA Introduction to Music
+ 9853  NES    236   SA Introduction to Islam
+ 9383  NES    324   EM Introduction to Later Sufism (ca. AD 1200 to
+                       present)
+ 9386  NES    345   SA Introduction to Islamic Law
+ 9809  NEU   259A   EC Introduction to Cognitive Neuroscience
+ 9818  NEU   259B   ST Introduction to Cognitive Neuroscience
+ 9423  ORF    335   QR Introduction to Financial Mathematics
+ 9457  PHI    202   EM Introduction to Moral Philosophy
+ 9475  PHI    205   EC Introduction to Ancient Philosophy
+ 9531  PHY    102   ST Introductory Physics II
+ 9032  PHY    233   ST An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9033  PHY    233   ST An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9037  PHY    234      An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9038  PHY    236      An Integrated, Quantitative Introduction to the
+                       Natural Sciences IV
+ 9582  PHY    509      Relativistic Quantum Theory (Introduction to
+                       Quantum Field Theory)
+ 9585  PHY    521      Introduction to Mathematical Physics
+ 9586  PHY    523      Introduction to Relativity
+ 9588  PHY    525      Introduction to Condensed Matter Physics
+ 9589  PHY    526      Introduction to Condensed Matter Physics
+ 9590  PHY    529      Introduction to High-Energy Physics
+ 9596  PHY    564      Physics of the Universe: Introduction to
+                       Theoretical Cosmology
+ 9609  POL    230   SA Introduction to Comparative Politics
+ 9623  POL    250   SA Introduction to Game Theory
+ 9741  POR    108      Introductory Portuguese for Spanish Speakers
+ 9742  POR    108      Introductory Portuguese for Spanish Speakers
+ 9115  POR    410   HA Latin American Studies Seminar: History of
+                       Brazil: An Introduction
+ 9766  PSY    101   ST Introduction to Psychology
+ 9809  PSY   259A   EC Introduction to Cognitive Neuroscience
+ 9818  PSY   259B   ST Introduction to Cognitive Neuroscience
+ 9853  REL    236   SA Introduction to Islam
+10013  SOC    203      Introduction to Urban Studies
+ 9992  THR    205   LA Introductory Playwriting
+ 9993  THR    205   LA Introductory Playwriting
+ 9994  THR    302      Introduction to Interdisciplinary Theater
+10009  TRA    301      Introduction to Machine Translation
+10013  URB    201      Introduction to Urban Studies
+ 8058  URB    303  STX Introduction to Environmental Engineering
+10019  VIS    202   LA Introductory Drawing
+10020  VIS    202   LA Introductory Drawing
+10021  VIS    202   LA Introductory Drawing
+10022  VIS    202   LA Introductory Drawing
+10023  VIS    204   LA Introductory Painting
+10024  VIS    204   LA Introductory Painting
+10025  VIS    204   LA Introductory Painting
+10026  VIS    204   LA Introductory Painting
+10027  VIS    212   LA Introductory Photography
+10028  VIS    212   LA Introductory Photography
+10029  VIS    222   LA Introductory Sculpture
+10030  VIS    222   LA Introductory Sculpture
+10035  VIS    262   LA Introductory Video and Film Production
+10036  VIS    262   LA Introductory Video and Film Production
+10037  VIS    262   LA Introductory Video and Film Production
+10038  VIS    262   LA Introductory Video and Film Production
+Exit status = 0
+------------------------------------------------------------------------
+python3 regoverviews.py -t science
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 7865  AFS    375   SA Science, Technology, and African Development
+ 7884  ANT    360   EM The Uses of Deception: Perspectives on Magic and
+                       Science
+ 9249  APC    351   QR Topics in Mathematical Modeling: Mathematical
+                       Neuroscience
+ 8026  AST    309      Science and Technology of Nuclear Energy:
+                       Fission and Fusion
+ 9032  CHM    233   ST An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9033  CHM    233   ST An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9037  CHM    234      An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9038  CHM    236      An Integrated, Quantitative Introduction to the
+                       Natural Sciences IV
+ 8292  COS    126   QR General Computer Science
+ 8293  COS    126   QR General Computer Science
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9032  COS    233   ST An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9033  COS    233   ST An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9037  COS    234      An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9038  COS    236      An Integrated, Quantitative Introduction to the
+                       Natural Sciences IV
+ 8321  COS    333      Advanced C%Science Programming Techniques
+ 8333  COS   598A      Advanced Topics in Computer Science: Economic and
+                       Systems Design for Electronic Marketplaces
+ 8334  COS   598B      Advanced Topics in Computer Science: Algorithms
+                       and Complexity
+ 8335  COS   598C      Advanced Topics in Computer Science: Systems for
+                       Large Data
+ 8336  COS   598D      Advanced Topics in Computer Science: Formal
+                       Methods in Networking
+ 8292  EGR    126   QR General Computer Science
+ 8293  EGR    126   QR General Computer Science
+ 8629  ELE    519      Seminar in Information Sciences and Systems
+ 8632  ELE   539A      Special Topics in Informations Sciences and
+                       Systems: Optimization of Communication Systems
+ 8633  ELE   539B      Special Topics in Information Sciences and
+                       Systems: Modern Coding Theory
+ 8814  FRS    108   ST Art and Science of Motorcycle Design
+ 8818  FRS    116   EM Neuroethics: The Intersection of Neuroscience
+                       with Social and Ethical Issues
+ 8826  FRS    132   SA What Can the Science of Economics Teach Us about
+                       the Theory of the State?
+ 8828  FRS    136   SA Science and Policy of Global Environmental Issues
+ 8877  GEO    506      Fundamentals of the Geosciences II
+ 8878  GEO    506      Fundamentals of the Geosciences II
+ 9016  HIS    595      Introduction to Historiography of Science
+ 9016  HOS    595      Introduction to Historiography of Science
+ 9032  ISC    233   ST An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9033  ISC    233   ST An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9037  ISC    234      An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9038  ISC    236      An Integrated, Quantitative Introduction to the
+                       Natural Sciences IV
+ 9146  MAE    224   ST Integrated Engineering Science Laboratory
+ 8026  MAE    309      Science and Technology of Nuclear Energy:
+                       Fission and Fusion
+ 9313  MAE    563      Modeling and Simulation in Materials Science
+ 9249  MAT    351   QR Topics in Mathematical Modeling: Mathematical
+                       Neuroscience
+ 9407  MOL    110   ST Neuroscience and Everyday Life
+ 9032  MOL    233   ST An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9033  MOL    233   ST An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9037  MOL    234      An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9038  MOL    236      An Integrated, Quantitative Introduction to the
+                       Natural Sciences IV
+ 9303  MOL    480      Proteomics in Biological Sciences
+ 9311  MSE    301      Materials Science and Engineering
+ 9313  MSE    504      Modeling and Simulation in Materials Science
+ 9407  NEU    101   ST Neuroscience and Everyday Life
+ 9809  NEU   259A   EC Introduction to Cognitive Neuroscience
+ 9818  NEU   259B   ST Introduction to Cognitive Neuroscience
+ 9834  NEU    416   EC Brain Imaging in Cognitive Neuroscience Research
+ 9414  NEU    511      Current Issues in Neuroscience and Behavior
+ 9508  PHI    321   EC Philosophy of Science
+ 9032  PHY    233   ST An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9033  PHY    233   ST An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9037  PHY    234      An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9038  PHY    236      An Integrated, Quantitative Introduction to the
+                       Natural Sciences IV
+ 8026  PHY    309      Science and Technology of Nuclear Energy:
+                       Fission and Fusion
+ 9809  PSY   259A   EC Introduction to Cognitive Neuroscience
+ 9818  PSY   259B   ST Introduction to Cognitive Neuroscience
+ 9834  PSY    416   EC Brain Imaging in Cognitive Neuroscience Research
+ 9414  PSY    511      Current Issues in Neuroscience and Behavior
+10139  WRI   501M      Reading and Writing about the Scientific
+                       Literature in English (Half Term: Molecular &
+                       Life Sciences: Molecular Sciences
+10141  WRI    502      Writing an Effective Scientific Research Article
+                       (Half Term): Science and Engineering
+10142  WRI   502E      Writing an Effective Scientific Research Article
+                       (Half Term): Electrical Engineering & Computer
+                       Sci: Electrical Engineeering and Computer Science
+10143  WRI   502M      Writing an Effective Scientific Research Article
+                       (Half Term): Molecular &Life Sciences &
+                       Engineering: Molecular Sciences
+10144  WRI   502P      Writing an Effective Scientific Research Article
+                       (Half Term): Physical and Applied Physical
+                       Sciences
+10242  WWS    584      The Use of Science in Public Policy
+Exit status = 0
+------------------------------------------------------------------------
+python3 regoverviews.py -t C_S
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+Exit status = 0
+------------------------------------------------------------------------
+python3 regoverviews.py -t c%S
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8321  COS    333      Advanced C%Science Programming Techniques
+Exit status = 0
+------------------------------------------------------------------------
+python3 regoverviews.py -d cos -n 3
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 9032  COS    233   ST An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9033  COS    233   ST An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9037  COS    234      An Integrated, Quantitative Introduction to the
+                       Natural Sciences II
+ 9038  COS    236      An Integrated, Quantitative Introduction to the
+                       Natural Sciences IV
+ 8597  COS    306   ST Introduction to Logic Design
+ 9363  COS    314   QR Computer and Electronic Music through
+                       Programming, Performance, and Composition
+ 8320  COS    320      Compiling Techniques
+ 8321  COS    333      Advanced C%Science Programming Techniques
+ 9240  COS    342   QR Introduction to Graph Theory
+ 8322  COS    398      Junior Independent Work (B.S.E. candidates only)
+ 8323  COS    423      Theory of Algorithms
+ 8326  COS    433      Cryptography
+ 8327  COS    435      Information Retrieval, Discovery, and Delivery
+Exit status = 0
+------------------------------------------------------------------------
+python3 regoverviews.py -d COS -a qr -n 2 -t intro
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8308  COS    217   QR Introduction to C_Science Programming Systems
+ 9240  COS    342   QR Introduction to Graph Theory
+Exit status = 0
+------------------------------------------------------------------------
+python3 regoverviews.py -t "Independent Study"
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8070  CEE    376      Independent Study
+ 8074  CEE    507      Independent Study I
+ 8075  CEE    508      Independent Study II
+Exit status = 0
+------------------------------------------------------------------------
+python3 regoverviews.py -t "Independent Study "
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 8074  CEE    507      Independent Study I
+ 8075  CEE    508      Independent Study II
+Exit status = 0
+------------------------------------------------------------------------
+python3 regoverviews.py -t "Independent Study  "
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+Exit status = 0
+------------------------------------------------------------------------
+python3 regoverviews.py -t " Independent Study"
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+Exit status = 0
+------------------------------------------------------------------------
+python3 regoverviews.py -t "  Independent Study"
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+Exit status = 0
+------------------------------------------------------------------------
+python3 regoverviews.py -t=-c
+ClsId Dept CrsNum Area Title
+----- ---- ------ ---- -----
+ 7939  ARC    489   LA Survey of Selected Works of Twentieth-Century
+                       Architects
+ 8021  ART    567      Seminar in 20th-Century Photography: American
+                       Modernist Photography during World War I
+ 8284  COM    399   LA Men in Tights: 18th-Century Fiction in Film
+ 8395  EAS    544      20th-Century Japanese Literature
+ 8551  EEB    332   SA Pre-Columbian Peoples of Tropical America and
+                       Their Environments
+ 8572  EGR    250      Engineering Projects in Community Service
+                       (EPICS): Non-credit
+ 9156  EGR    328      Energy for a Greenhouse-Constrained World
+ 8583  EGR    350      Engineering Projects in Community Service
+                       (EPICS): Non-credit
+ 8585  EGR    450      Engineering Projects in Community Service
+                       (EPICS): Non-credit
+ 9156  ENV    328      Energy for a Greenhouse-Constrained World
+ 8799  FRE    352   LA Topics in 17th- and 18th-Century French
+                       Literature: Women and the Novel
+ 8801  FRE    367   LA Topics in 19th- and 20th-Century French
+                       Literature and Culture: Literature and Gastronomy
+                       in the Age of Globalization
+ 8808  FRE    525      20th-Century French Poetry or Theater: Surrealism
+ 9009  HIS    570      The World and Britain c. 1830-c.1960
+ 8551  LAS    350   SA Pre-Columbian Peoples of Tropical America and
+                       Their Environments
+ 9156  MAE    328      Energy for a Greenhouse-Constrained World
+ 9369  MUS    514      Topics in 19th- and Early 20th-Century Music:
+                       Music and Film
+ 8799  WOM    352   LA Topics in 17th- and 18th-Century French
+                       Literature: Women and the Novel
+Exit status = 0
+------------------------------------------------------------------------
+python3 regoverviews.py -t Topics in Policy Analysis (Half-Term): Management of Public Organizations
+sh: -c: line 0: syntax error near unexpected token `('
+sh: -c: line 0: `python3 regoverviews.py -t Topics in Policy Analysis (Half-Term): Management of Public Organizations'
+Exit status = 2
+------------------------------------------------------------------------
+python3 regoverviews.py a qr
+usage: regoverviews.py [-h] [-d dept] [-n num] [-a area] [-t title]
+regoverviews.py: error: unrecognized arguments: a qr
+Exit status = 2
+------------------------------------------------------------------------
+python3 regoverviews.py -A qr
+usage: regoverviews.py [-h] [-d dept] [-n num] [-a area] [-t title]
+regoverviews.py: error: unrecognized arguments: -A qr
+Exit status = 2
+------------------------------------------------------------------------
+python3 regoverviews.py "-a " qr
+usage: regoverviews.py [-h] [-d dept] [-n num] [-a area] [-t title]
+regoverviews.py: error: unrecognized arguments: qr
+Exit status = 2
+------------------------------------------------------------------------
+python3 regoverviews.py -a qr st
+usage: regoverviews.py [-h] [-d dept] [-n num] [-a area] [-t title]
+regoverviews.py: error: unrecognized arguments: st
+Exit status = 2
+------------------------------------------------------------------------
+python3 regoverviews.py -a
+usage: regoverviews.py [-h] [-d dept] [-n num] [-a area] [-t title]
+regoverviews.py: error: argument -a: expected one argument
+Exit status = 2
+------------------------------------------------------------------------
+python3 regoverviews.py -a qr -d
+usage: regoverviews.py [-h] [-d dept] [-n num] [-a area] [-t title]
+regoverviews.py: error: argument -d: expected one argument
+Exit status = 2
+------------------------------------------------------------------------
+python3 regoverviews.py -a -d
+usage: regoverviews.py [-h] [-d dept] [-n num] [-a area] [-t title]
+regoverviews.py: error: argument -a: expected one argument
+Exit status = 2
+------------------------------------------------------------------------
+python3 regoverviews.py -x
+usage: regoverviews.py [-h] [-d dept] [-n num] [-a area] [-t title]
+regoverviews.py: error: unrecognized arguments: -x
+Exit status = 2
