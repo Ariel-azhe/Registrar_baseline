@@ -1,13 +1,38 @@
 Your full name and netid and your teammate's full name and netid.
 
-[Enter your reply here.]
+Ariel Yuan (ay3052), Grace Best (gb5279)
 
 A paragraph describing your contribution, and another paragraph
 describing your teammate's contribution. Please be thorough; we're
 looking for two substantial paragraphs, not a sentence or two. (If
 you worked alone, then you should skip this section.)
 
-[Enter your reply here.]
+Ariel was the driver while Grace was the navigator, so we were
+always working on the program together at the same time. 
+We would meet up so that we could always be next to each other and code Ariel
+did more of the typing while Grace did more debugging and
+catching errors in the code. 
+
+Ariel typed most of the initial code structure by building on top of
+the code files we went through in class that were of helpful guidance.
+She also typed most of the comments and adjusted the line lengths in
+terms of style based on the strategy she and Grace came up with.
+She also assessed the syntax of the Argparse module and determined
+which functionalities to use for assignment specifications. 
+She added the test cases from the assignment specifications and 
+her joined understanding with Grace about the needed tests. 
+She also helped determine ways to shift the code structure such
+as breaking elifs into ifs to accomodate for multiple command line
+options in regoverviews.py.
+
+Grace helped find documentation for the syntax (general Python
+syntax, textwrap, argparse, .join()). She caught errors with 
+the difference between f strings and single quoted strings, 
+style differences between outputs, using nargs 1 that produced
+the wrong error message. She found the correct documentation for
+python functions such as join() in order to solve pylint warnings
+about line length and make sure the outputs also matches that of
+the reference file. 
 
 A description of the help that you received from people other
 than the course instructors while doing the assignment. Your
@@ -16,7 +41,8 @@ assignment solution: people from whom you received help." Write "None"
 to indicate that you received no help from other people other than
 the course instructors.
 
-[Enter your reply here.]
+Sorting our columns alphabetically, using ‘metavars’ and ‘type’
+in argparse to throw errors if in-compatible input: TA Raluca Ghilea.
 
 A description of the written sources of information other than the
 lecture material that you used while doing the assignment. Your
@@ -25,26 +51,43 @@ assignment solution: sources of information." Write "None" to indicate
 that you used no written sources of information other than the lecture
  material.
 
-[Enter your reply here.]
+We used the argparse module to take in command lien arguments:
+argparse python documentation
+(https://docs.python.org/3/library/argparse.html#)
+
+We used the textwrap module for formatting:
+textwrap python documentation
+(https://docs.python.org/3/library/textwrap.html)
+
+We used the .join() method on strings since they were too long for
+one line and to maintain formatting:
+(https://www.w3schools.com/python/ref_string_join.asp)
+
+We used the w3schools for python syntax (such as list(), insert(), list parsing):
+(https://www.w3schools.com/python/)
 
 A description of the help that you received from generative AI while
 doing the assignment. Your description must consist of lines of the
 form "aspect of your assignment solution: generative AI engines used."
 Write "None" to indicate that you received no help from generative AI.
 
-[Enter your reply here.]
+None
 
 An indication of how much time you spent doing the assignment.
 
-[Enter your reply here.]
+~11 hours
 
 Your assessment of the assignment: Did it help you to learn? What did
 it help you to learn? Do you have any suggestions for improvement? Etc.
 
-[Enter your reply here.]
+I really liked that a lot of the assignment work is with the nuances
+of the sytax and truly understanding what every method and keyword
+meant. I just hoped that we could've covered more of the external
+libraries such as Argparse in class. Libraries such as Textwrap that
+are more simple could be for us to explore on our own. 
 
 (Optionally) Any information that will help us to grade your work in
 the most favorable light. In particular you must describe all known
 bugs.
 
-[Enter your reply here.]
+NA
