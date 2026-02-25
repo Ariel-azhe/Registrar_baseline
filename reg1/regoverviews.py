@@ -49,8 +49,6 @@ def main():
             with contextlib.closing(connection.cursor()) as cursor:
                 # Use argparse to parse arguments
                 # and classify them into different options
-                des = ''.join(('Registrar application: ',
-                              'show overviews of classes'))
                 dept_help = ''.join(('show only those classes ',
                                      'whose department '
                                      'contains dept'))
@@ -63,7 +61,9 @@ def main():
                 title_help = ''.join(('show only those classes ',
                                       'whose course title ',
                                       'contains title'))
-                ap = argparse.ArgumentParser(description = des)
+                ap = argparse.ArgumentParser(
+                    description = 'Registrar application: '
+                    'show overviews of classes')
                 ap.add_argument('-d', type = str, metavar = 'dept',
                                 help = dept_help)
                 ap.add_argument('-n', metavar = 'num',
@@ -102,7 +102,7 @@ def main():
                     prepare.append(f'%{escape_x(ns.t)}%')
                 # Default case for no command line arguments:
                 # display all classes
-                if len(sys.argv) == 0:
+                if len(sys.argv) == 1:
                     stmt_str = '''
                     SELECT classes.classid, crosslistings.dept, 
                     crosslistings.coursenum, courses.area, courses.title
