@@ -29,8 +29,8 @@ def escape_x(x):
         index = subx.find('_')
 
     new_x = ''.join(x_list)
-    subx = new_x
-    x_list = list(new_x)
+    subx = ''.join(x_list)
+    x_list = list(''.join(x_list))
     index = subx.find('%')
     # find every occurence of '%' in x and inserts a '/' in front
     while index >= 0:
@@ -74,6 +74,9 @@ def main():
                                 help = title_help)
                 ns = ap.parse_args()
 
+                # Parameters to be stored in a list
+                prepare = []
+
                 # Select the columns that should be
                 # displayed with corresponding courseids
                 stmt_str = '''
@@ -86,16 +89,17 @@ def main():
                 # Adds constraints to the SQLite search
                 # based on user input
                 if ns.d:
-                    stmt_str += f'''
-                    AND dept = '{ns.d.upper()}' '''
+                    stmt_str += ' AND crosslistings.dept LIKE ? '
+                    prepare.append(f'%{ns.d.upper()}%')
                 if ns.n:
-                    stmt_str += f''' AND coursenum LIKE '%{ns.n}%' '''
+                    stmt_str += ' AND coursenum LIKE ? '
+                    prepare.append(f'%{ns.n}%')
                 if ns.a:
-                    stmt_str += f''' AND area = '{ns.a.upper()}' '''
+                    stmt_str += ' AND area LIKE ? '
+                    prepare.append(f'%{ns.a.upper()}%')
                 if ns.t:
-                    stmt_str += f'''
-                    AND title LIKE '%{escape_x(ns.t)}%' ESCAPE '/'
-                    '''
+                    stmt_str += ' AND title LIKE ? '
+                    prepare.append(f'%{escape_x(ns.t)}%')
                 # Default case for no command line arguments:
                 # display all classes
                 if len(sys.argv) == 0:
@@ -105,7 +109,7 @@ def main():
                     FROM classes, crosslistings, courses
                     '''
                 stmt_str += 'ORDER BY dept, coursenum, classid'
-                cursor.execute(stmt_str)
+                cursor.execute(stmt_str, prepare)
                 table = cursor.fetchall()
                 # Print output in specified table format
                 print('ClsId', 'Dept', 'CrsNum', 'Area', 'Title')
