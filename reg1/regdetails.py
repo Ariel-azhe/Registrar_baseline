@@ -56,14 +56,14 @@ def main():
                 print('--------------')
                 print('Course Details')
                 print('--------------')
-                cursor.execute(f''' SELECT DISTINCT classes.courseid,
+                cursor.execute(''' SELECT DISTINCT classes.courseid,
                                dept, coursenum
                                FROM classes, crosslistings
                                WHERE
                                classes.courseid = crosslistings.courseid
-                               AND classes.courseid = '{courseid}'
+                               AND classes.courseid = ?
                                ORDER BY dept, coursenum
-                               ''')
+                               ''', [courseid])
                 table = cursor.fetchall()
                 printed = True
                 for row in table:
@@ -72,10 +72,10 @@ def main():
                         printed = False
                     print('Dept and Number:', row[1], row[2])
 
-                cursor.execute(f''' SELECT area, title, descrip, prereqs
+                cursor.execute(''' SELECT area, title, descrip, prereqs
                                FROM courses
-                               WHERE courseid = '{courseid}'
-                               ''')
+                               WHERE courseid = ?
+                               ''', [courseid])
                 table = cursor.fetchall()
                 space_num = 3
                 for row in table:
@@ -98,12 +98,12 @@ def main():
                         width = 72,
                         subsequent_indent=' ' * space_num):
                         print(line)
-                cursor.execute(f''' SELECT profname
+                cursor.execute(''' SELECT profname
                                FROM profs, coursesprofs
                                WHERE coursesprofs.profid = profs.profid
-                               AND coursesprofs.courseid = '{courseid}'
+                               AND coursesprofs.courseid = ?
                                ORDER BY profname
-                               ''')
+                               ''', [courseid])
                 table = cursor.fetchall()
                 for row in table:
                     print('Professor:', row[0])
