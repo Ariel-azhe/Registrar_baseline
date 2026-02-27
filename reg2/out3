@@ -1,0 +1,17 @@
+------------------------------------------------------------------------
+python regdetails.py -h
+usage: regdetails.py [-h] classid
+
+Registrar application: show details about a class
+
+positional arguments:
+  classid     the id of the class whose details should be shown
+
+options:
+  -h, --help  show this help message and exit
+Exit status = 0
+------------------------------------------------------------------------
+python regdetails.py localhost 5001 8321
+usage: regdetails.py [-h] classid
+regdetails.py: error: argument classid: invalid int value: 'localhost'
+Exit status = 2

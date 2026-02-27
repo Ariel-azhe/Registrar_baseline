@@ -1,0 +1,8 @@
+------------------------------------------------------------------------
+python regdetails.py -h
+RuntimeError: Bad magic number in .pyc file
+Exit status = 1
+------------------------------------------------------------------------
+python regdetails.py localhost 5001 8321
+RuntimeError: Bad magic number in .pyc file
+Exit status = 1
