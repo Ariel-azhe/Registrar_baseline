@@ -21,10 +21,14 @@ DATABASE_URL = 'file:reg.sqlite'
 # in a way that allows escaping special characters
 # within it through SQLite ESCAPE
 def write_courses(courses):
+    if courses[0] == False:
+        print(f'{courses[1]}', file=sys.stderr)
+        sys.exit(1)
     # Print output in specified table format
     print('ClsId', 'Dept', 'CrsNum', 'Area', 'Title')
     print('-----', '----', '------', '----', '-----')
     space_num = 5+1+4+1+6+1+4+1
+    print(courses[1])
     for row in courses[1]:
         for line in textwrap.wrap('%5s %4s %6s %4s %s'
                                     % (row['classid'], row['dept'],

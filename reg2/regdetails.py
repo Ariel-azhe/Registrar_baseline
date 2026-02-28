@@ -10,18 +10,22 @@ import contextlib
 import sqlite3
 import textwrap
 import argparse
-
+import json
+import socket
 #-----------------------------------------------------------------------
 
 DATABASE_URL = 'file:reg.sqlite'
 
-def write_class(details):
+def write_class(class_detail):
+    if class_detail[0] == False:
+        print(f'{class_detail[1]}', file=sys.stderr)
+        sys.exit(1)
+    details = class_detail[1]
     print('-------------')
     print('Class Details')
     print('-------------')
     print('Class Id:', details['classid'])
     # Store the class' courseid in a variable
-    courseid = details['courseid']
     print('Days:', details['days'])
     print('Start time:', details['starttime'])
     print('End time:', details['endtime'])
@@ -30,16 +34,11 @@ def write_class(details):
     print('--------------')
     print('Course Details')
     print('--------------')
-    cursor.execute(''' SELECT DISTINCT classes.courseid,
-                               dept, coursenum
-                               FROM classes, crosslistings
-                               WHERE
-                               classes.courseid = crosslistings.courseid
-                               AND classes.courseid = ?
-                               ORDER BY dept, coursenum
-                               ''', [courseid])
-    table = cursor.fetchall()
-    print('Course Id:', details['courseid'])
+    space_num = 3
+    if details['courseid'] != '':
+        print('Course Id: ' + details['courseid'])
+    else:
+        print('Course Id:')
     for cross in details['deptcoursenums']:
         print('Dept and Number:', cross['dept'], cross['coursenum'])
     if details['area'] != '':
@@ -65,58 +64,37 @@ def write_class(details):
     for prof in details['profnames']:
         print('Professor:', prof)
 
-    for row in table:
-        if printed:
-            print('Course Id:', row[0])
-            printed = False
-        print('Dept and Number:', row[1], row[2])
-
-    cursor.execute(''' SELECT area, title, descrip, prereqs
-                               FROM courses
-                               WHERE courseid = ?
-                               ''', [courseid])
-    table = cursor.fetchall()
-    space_num = 3
-    for row in table:
-        if row[0] != '':
-            print('Area: ' + row[0])
-        else:
-            print('Area:')
-        for line in textwrap.wrap(
-            'Title: ' + row[1],
-            width = 72,
-            subsequent_indent= ' ' * space_num):
-            print(line)
-        for line in textwrap.wrap(
-            'Description: ' + row[2],
-            width = 72,
-            subsequent_indent= ' ' * space_num):
-            print(line)
-        for line in textwrap.wrap(
-            'Prerequisites: ' + row[3],
-            width = 72,
-            subsequent_indent=' ' * space_num):
-            print(line)
-    cursor.execute(''' SELECT profname
-                               FROM profs, coursesprofs
-                               WHERE coursesprofs.profid = profs.profid
-                               AND coursesprofs.courseid = ?
-                               ORDER BY profname
-                               ''', [courseid])
-    table = cursor.fetchall()
-    for row in table:
-        print('Professor:', row[0])
 def main():
     try:
+        host_help = ''.join(('the computer on which the ',
+                                'server is running'))
+        port_help = ''.join(('the port at which the ',
+                                'server is listening'))
         reg_desc = ''.join(('Registrar application: ',
                             'show details about a class'))
         classid_help = ''.join(('the id of the class whose ',
                                 'details should be shown'))
         parser = argparse.ArgumentParser(description = reg_desc)
         # Parse the command line argument as the classid
+        parser.add_argument('host', type = str,
+                        help = host_help)
+        parser.add_argument('port', type = int,
+                        help = port_help)
         parser.add_argument('classid', type = int,
                             help = classid_help)
         ns = parser.parse_args()
+        args = ('get_details', ns.classid)
+        json_str = json.dumps(args)
+        with socket.socket() as sock:
+            sock.connect((ns.host, ns.port))
+            with sock.makefile(mode='w', encoding='utf-8') as flo:
+                flo.write(json_str + '\n')
+                flo.flush()
+            with sock.makefile(mode='r', encoding='utf-8') as flo:
+                json_str = flo.readline()
+            json_str = json_str.rstrip()
+            details = json.loads(json_str)
+            write_class(details)
                 
     # Write the Exception message contained within
     # the thrown Exception object to stderr
