@@ -57,14 +57,37 @@ def main():
 
     program, host, port = parse_args()
 
-    exec_command(program, '-h')
-
     prefix = host + ' ' + str(port) + ' '
 
+    # Test for help page content
+    exec_command(program, '-h')
+
+
+    # Test for classes with multiple
+    # professors or departments
+    # and long descriptions
     exec_command(program, prefix + '8321')
+    exec_command(program, prefix + '9032')
+    exec_command(program, prefix + '8293')
+    exec_command(program, prefix + '9977')
+    exec_command(program, prefix + '9012')
+    exec_command(program, prefix + '10188')
 
+    # Test for no positional arguments
+    exec_command(program, prefix + '')
+    # Test for too many command line args
+    exec_command(program, prefix + '8321 9032')
+    # Test for non-compatible argument type
+    exec_command(program, prefix + 'abc123')
+    # Test for non-existent class
+    exec_command(program, prefix + '9034')
 
-    # Add more tests here.
+    #Test for course withot prof:
+    exec_command(program, prefix + '8324')
+
+    # Stress Test:
+    for i in range(7000, 7200):
+        exec_command(program, prefix + str(i))
 
 if __name__ == '__main__':
     main()

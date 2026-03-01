@@ -64,7 +64,43 @@ def main():
     exec_command(program, prefix + '-d COS')
     exec_command(program, prefix + '-d COS -a qr -n 2 -t intro')
 
-    # Add more tests here.
+
+    # Test for displaying all classes
+    exec_command(program, '')
+
+    # Tests for optional commands
+    # (found on assignment website)
+    exec_command(program, prefix + '-d COS')
+    exec_command(program, prefix + '-n 333')
+    exec_command(program, prefix + '-n b')
+    exec_command(program, prefix + '-a Qr')
+    exec_command(program, prefix + '-t intro')
+    exec_command(program, prefix + '-t science')
+    exec_command(program, prefix + '-t C_S')
+    exec_command(program, prefix + '-t c%S')
+    exec_command(program, prefix + '-d cos -n 3')
+    exec_command(program, prefix + '-d COS -a qr -n 2 -t intro')
+    exec_command(program, prefix + '-t "Independent Study"')
+    exec_command(program, prefix + '-t "Independent Study "')
+    exec_command(program, prefix + '-t "Independent Study  "')
+    exec_command(program, prefix + '-t " Independent Study"')
+    exec_command(program, prefix + '-t "  Independent Study"')
+    exec_command(program, prefix + '-t=-c')
+
+    # Test for classes with long titles
+    exec_command(program, prefix + '-t Topics in Policy Analysis (Half-Term): Management of Public Organizations')
+
+    # Error Handling Examples:
+    # (from assignment website)
+    exec_command(program, prefix + 'a qr')
+    exec_command(program, prefix + '-A qr')
+    exec_command(program, prefix + '"-a " qr')
+    exec_command(program, prefix + '-a qr st')
+    exec_command(program, prefix + '-a')
+    exec_command(program, prefix + '-a qr -d')
+    exec_command(program, prefix + '-a -d')
+    exec_command(program, prefix + '-x')
+
 
 #-----------------------------------------------------------------------
 

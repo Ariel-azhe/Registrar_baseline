@@ -6,8 +6,6 @@
 #-----------------------------------------------------------------------
 
 import sys
-import contextlib
-import sqlite3
 import argparse
 import textwrap
 import json
@@ -21,14 +19,13 @@ DATABASE_URL = 'file:reg.sqlite'
 # in a way that allows escaping special characters
 # within it through SQLite ESCAPE
 def write_courses(courses):
-    if courses[0] == False:
-        print(f'{courses[1]}', file=sys.stderr)
+    if courses[0] is False:
+        print(f'{sys.argv[0]}: {courses[1]}', file=sys.stderr)
         sys.exit(1)
     # Print output in specified table format
     print('ClsId', 'Dept', 'CrsNum', 'Area', 'Title')
     print('-----', '----', '------', '----', '-----')
     space_num = 5+1+4+1+6+1+4+1
-    print(courses[1])
     for row in courses[1]:
         for line in textwrap.wrap('%5s %4s %6s %4s %s'
                                     % (row['classid'], row['dept'],
@@ -73,7 +70,7 @@ def main():
                         help = host_help)
         ap.add_argument('port', type = int,
                         help = port_help)
-        ns = ap.parse_args()   
+        ns = ap.parse_args()
         dict = {'dept':'', 'coursenum':'',
                 'area':'', 'title':''}
         if ns.d:
@@ -85,19 +82,17 @@ def main():
         if ns.t:
             dict['title'] = ns.t
         args = ('get_overviews', dict)
-        json_str = json.dumps(args)
         with socket.socket() as sock:
             sock.connect((ns.host, ns.port))
             with sock.makefile(mode='w', encoding='utf-8') as flo:
-                flo.write(json_str + '\n')
+                flo.write(json.dumps(args) + '\n')
                 flo.flush()
             with sock.makefile(mode='r', encoding='utf-8') as flo:
                 json_str = flo.readline()
-            
-            json_str = json_str.rstrip()
-            courses = json.loads(json_str)
 
-            write_courses(courses)
+            json_str = json_str.rstrip()
+
+            write_courses(json.loads(json_str))
 
 
     # Write the Exception message contained within

@@ -6,8 +6,6 @@
 #-----------------------------------------------------------------------
 
 import sys
-import contextlib
-import sqlite3
 import textwrap
 import argparse
 import json
@@ -17,8 +15,8 @@ import socket
 DATABASE_URL = 'file:reg.sqlite'
 
 def write_class(class_detail):
-    if class_detail[0] == False:
-        print(f'{class_detail[1]}', file=sys.stderr)
+    if class_detail[0] is False:
+        print(f'{sys.argv[0]}: {class_detail[1]}', file=sys.stderr)
         sys.exit(1)
     details = class_detail[1]
     print('-------------')
@@ -95,7 +93,7 @@ def main():
             json_str = json_str.rstrip()
             details = json.loads(json_str)
             write_class(details)
-                
+
     # Write the Exception message contained within
     # the thrown Exception object to stderr
     except Exception as ex:
