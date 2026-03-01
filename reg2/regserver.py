@@ -13,8 +13,10 @@ import os
 import json
 import threading
 import time
+import dotenv
 #-----------------------------------------------------------------------
 DATABASE_URL = 'file:reg.sqlite'
+dotenv.load_dotenv()
 CDELAY = int(os.environ.get('CDELAY', '0'))
 IODELAY = int(os.environ.get('IODELAY', '0'))
 
@@ -50,50 +52,6 @@ def escape_x(x):
     new_x = ''.join(x_list)
     return new_x
 
-'''
-class CourseThread(threading.Thread):
-    def __init__(self, sock):
-        threading.Thread.__init__(self)
-        self._sock = sock
-
-    def run(self):
-        print('Spawned child thread')
-        # Simulate a compute-bound server.
-
-        with self._sock.makefile(mode='r', encoding='utf-8') as in_flo:
-            json_str = in_flo.readline()
-            json_str = json_str.rstrip()
-
-        start_time = time.perf_counter()
-
-        args = json.loads(json_str)
-        print('received request:', args)
-
-        try:
-            if args[0] == 'get_overviews':
-                to_client = search_courses(args)
-            else:
-                to_client = search_details(args)
-            json_str = json.dumps(to_client)
-            with self._sock.makefile(
-                mode='w', encoding='ascii') as out_flo:
-                out_flo.write(json_str + '\n')
-                out_flo.flush()
-            end_time = time.perf_counter()
-            elapsed_time = end_time - start_time
-            print(f"Elapsed time: {elapsed_time:.6f} seconds")
-        except Exception as ex:
-            to_client = [False,
-                         'A server error occurred. '+
-                         'Please contact the system administrator.']
-            json_str = json.dumps(to_client)
-            with self._sock.makefile(mode='w', encoding='utf-8') as flo:
-                flo.write(json_str + '\n')
-                flo.flush()
-            print(f'{sys.argv[0]}: {ex}', file=sys.stderr)
-        print('Closed socket in',  args[0], 'thread')
-        print('Exiting',  args[0], 'thread')
-'''
 def search_details(args):
     time.sleep(IODELAY)
     consume_cpu_time(CDELAY)
