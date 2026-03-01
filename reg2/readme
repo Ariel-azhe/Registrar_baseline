@@ -1,13 +1,23 @@
 Your full name and netid and your teammate's full name and netid.
 
-[Enter your reply here.]
+Ariel Yuan (ay3052), Grace Best(gb5279)
 
 A paragraph describing your contribution, and another paragraph
 describing your teammate's contribution. Please be thorough; we're
 looking for two substantial paragraphs, not a sentence or two. (If
 you worked alone, then you should skip this section.)
 
-[Enter your reply here.]
+Ariel referenced the lectures and handouts about IODELAY, CDELAY,
+sockets, reading and writing to files, multithreading, server
+client communication, and dotenv in order to lay out the foundational
+structure of code in regserver.py, regoverview.py, and regdetails.py.
+She designed the guidelines of parsing the existing code from assignment 1
+into the server-side and client-side based on what clients should access
+and receive as output in the terminal. She debugged the socket connections,
+opens and closes, and passing as arguments. She also made sure the style
+was in accordance with pylint's requirements and optimized code structure
+by eliminating uneccessary local variables and modularized code into
+different functions. 
 
 A description of the help that you received from people other
 than the course instructors while doing the assignment. Your
@@ -16,7 +26,7 @@ assignment solution: people from whom you received help." Write "None"
 to indicate that you received no help from other people other than
 the course instructors.
 
-[Enter your reply here.]
+None.
 
 A description of the written sources of information other than the
 lecture material that you used while doing the assignment. Your
@@ -32,16 +42,19 @@ doing the assignment. Your description must consist of lines of the
 form "aspect of your assignment solution: generative AI engines used."
 Write "None" to indicate that you received no help from generative AI.
 
-[Enter your reply here.]
+None. 
 
 An indication of how much time you spent doing the assignment.
 
-[Enter your reply here.]
+10
 
 Your assessment of the assignment: Did it help you to learn? What did
 it help you to learn? Do you have any suggestions for improvement? Etc.
 
-[Enter your reply here.]
+I really enjoyed trying out networking for the first time in this assignment
+and learned a lot from understanding how computers connect with each other 
+and communicate information through computing protocols. I also liked the
+conceptual learning of the socket, server, and client.
 
 (Optionally) Any information that will help us to grade your work in
 the most favorable light. In particular you must describe all known
@@ -52,7 +65,11 @@ bugs.
 Your answer to the two questions provided in the assignment
 specification.
 
-[Enter your reply here.]
+1. With respect to I/O and compute delays, in a high-volume environment under what circumstances is regserver.py better than regserverprelim.py?
+The server is largely the same in speed as the prelim version but its performance decreases less with higher IODELAY
+compared to with high CDELAY. 
+2. With respect to I/O and compute delays, in a high-volume environment under what circumstances is regserver.py not better than regserverprelim.py?
+The server is not better than the prelim version with high CDELAY. 
 
             I = 5       C = 10       I = 10     I = 20      0          
 prelim     5.018654    10.013004    10.016926  20.024050  0.008234
