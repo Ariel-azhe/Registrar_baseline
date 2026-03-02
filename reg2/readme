@@ -17,7 +17,13 @@ and receive as output in the terminal. She debugged the socket connections,
 opens and closes, and passing as arguments. She also made sure the style
 was in accordance with pylint's requirements and optimized code structure
 by eliminating uneccessary local variables and modularized code into
-different functions. 
+different functions.
+
+Grace fixed errors in Assignment 1 by implementing prepared SQL statements,
+which we then carried into this assignment by adding a few adjustments.
+Furthermore, she helped with catching errors and debugging as she practiced
+pair-programming with Ariel. She also checked that dotenv was working as it
+wasn't working on her partner's device. 
 
 A description of the help that you received from people other
 than the course instructors while doing the assignment. Your
@@ -35,7 +41,20 @@ assignment solution: sources of information." Write "None" to indicate
 that you used no written sources of information other than the lecture
 material.
 
-[Enter your reply here.]
+We used the argparse module to take in command line arguments:
+argparse python documentation
+(https://docs.python.org/3/library/argparse.html#)
+
+We used the textwrap module for formatting:
+textwrap python documentation
+(https://docs.python.org/3/library/textwrap.html)
+
+We used the .join() method on strings since they were too long for
+one line and to maintain formatting:
+(https://www.w3schools.com/python/ref_string_join.asp)
+
+We used the w3schools for python syntax (such as list(), insert(), list parsing):
+(https://www.w3schools.com/python/)
 
 A description of the help that you received from generative AI while
 doing the assignment. Your description must consist of lines of the
@@ -46,7 +65,7 @@ None.
 
 An indication of how much time you spent doing the assignment.
 
-10
+~10 hours
 
 Your assessment of the assignment: Did it help you to learn? What did
 it help you to learn? Do you have any suggestions for improvement? Etc.
@@ -60,7 +79,7 @@ conceptual learning of the socket, server, and client.
 the most favorable light. In particular you must describe all known
 bugs.
 
-[Enter your reply here.]
+N/A
 
 Your answer to the two questions provided in the assignment
 specification.
@@ -74,6 +93,7 @@ The server is not better than the prelim version with high CDELAY.
             I = 5       C = 10       I = 10     I = 20      0          
 prelim     5.018654    10.013004    10.016926  20.024050  0.008234
 server     5.020409    10.111797    10.020531  20.031087  0.010685
+
             C = 20       I = 60
-            20.075538   80.117777
-            20.495061   80.147606
+prelim     20.075538   80.117777
+server     20.495061   80.147606
