@@ -52,6 +52,7 @@ def run_test(server_url, browser_process, input_values):
         page = browser_process.new_page()
         page.goto(server_url)
 
+        print(server_url)
         dept_input = page.locator('#deptInput')
         coursenum_input = page.locator('#coursenumInput')
         area_input = page.locator('#areaInput')
