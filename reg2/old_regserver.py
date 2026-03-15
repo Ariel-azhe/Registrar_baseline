@@ -54,7 +54,7 @@ def escape_x(x):
 
 # Function to access the database
 # And search for class details to be
-# Returned to and displayed by 
+# Returned to and displayed by
 # The regdetails.py client
 def search_details(args):
     time.sleep(IODELAY)
@@ -86,7 +86,7 @@ def search_details(args):
             else:
                 for row in tab:
                     table['classid'] = row[0]
-                    table['courseid'] = row[1]
+                    courseid = row[1]
                     table['days'] = row[2]
                     table['starttime'] = row[3]
                     table['endtime'] = row[4]
@@ -98,7 +98,7 @@ def search_details(args):
                             classes.courseid = crosslistings.courseid
                             AND classes.courseid = ?
                             ORDER BY dept, coursenum
-                            ''', [table['courseid']])
+                            ''', [courseid])
                 tab = cursor.fetchall()
                 for row in tab:
                     cross = {'dept':row[0], 'coursenum':row[1]}
@@ -107,7 +107,7 @@ def search_details(args):
                                 SELECT area, title, descrip, prereqs
                                 FROM courses
                                 WHERE courseid = ?
-                                ''', [table['courseid']])
+                                ''', [courseid])
                 tab = cursor.fetchall()
                 for row in tab:
                     table['area'] = row[0]
@@ -119,7 +119,7 @@ def search_details(args):
                             WHERE coursesprofs.profid = profs.profid
                             AND coursesprofs.courseid = ?
                             ORDER BY profname
-                            ''', [table['courseid']])
+                            ''', [courseid])
                 tab = cursor.fetchall()
                 for row in tab:
                     table['profnames'].append(row[0])
@@ -129,7 +129,7 @@ def search_details(args):
 
 # Function to access the database
 # And search for courses to be
-# Returned to and displayed by 
+# Returned to and displayed by
 # The regoverviews.py client
 def search_courses(args):
     time.sleep(IODELAY)
@@ -139,7 +139,6 @@ def search_courses(args):
             isolation_level=None, uri=True) as connection:
         with contextlib.closing(connection.cursor()) as cursor:
             dict = args[1]
-            print(dict)
             # Select the columns that should be
             # displayed with corresponding courseids
             prepare = []
@@ -160,9 +159,7 @@ def search_courses(args):
                 stmt_str += ' AND area LIKE ? '
                 prepare.append(f'%{dict['area'].upper()}%')
             if dict['title'] != '':
-                stmt_str += '''
-                  AND title LIKE ? ESCAPE '/'
-                  '''
+                stmt_str += ' AND title LIKE ? '
                 prepare.append(f'%{escape_x(dict['title'])}%')
 
             stmt_str += 'ORDER BY dept, coursenum, classid'

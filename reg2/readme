@@ -56,6 +56,12 @@ one line and to maintain formatting:
 We used the w3schools for python syntax (such as list(), insert(), list parsing):
 (https://www.w3schools.com/python/)
 
+We used the python documentation page for threading
+(https://docs.python.org/3/library/threading.html)
+
+We referenced this page for the syntax of thread.threading
+(https://codingtechroom.com/question/create-new-thread-client-request-server)
+
 A description of the help that you received from generative AI while
 doing the assignment. Your description must consist of lines of the
 form "aspect of your assignment solution: generative AI engines used."
@@ -70,9 +76,9 @@ An indication of how much time you spent doing the assignment.
 Your assessment of the assignment: Did it help you to learn? What did
 it help you to learn? Do you have any suggestions for improvement? Etc.
 
-I really enjoyed trying out networking for the first time in this assignment
+We really enjoyed trying out networking for the first time in this assignment
 and learned a lot from understanding how computers connect with each other 
-and communicate information through computing protocols. I also liked the
+and communicate information through computing protocols. We also liked the
 conceptual learning of the socket, server, and client.
 
 (Optionally) Any information that will help us to grade your work in

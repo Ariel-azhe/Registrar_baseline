@@ -15,9 +15,8 @@ import socket
 
 DATABASE_URL = 'file:reg.sqlite'
 
-# Function to formulate the argument passed as x
-# in a way that allows escaping special characters
-# within it through SQLite ESCAPE
+# Write course information to output
+# With specific formatting
 def write_courses(courses):
     if courses[0] is False:
         print(f'{sys.argv[0]}: {courses[1]}', file=sys.stderr)
@@ -35,6 +34,13 @@ def write_courses(courses):
                                     subsequent_indent =
                                     ' ' * space_num):
             print(line)
+
+#-----------------------------------------------------------------------
+
+# Main function to accept command-line
+# Arguments and send to the server
+# As well as accept database information
+# From the server to be printed to output
 def main():
     try:
         # Use argparse to parse arguments

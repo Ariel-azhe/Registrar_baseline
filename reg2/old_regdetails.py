@@ -21,7 +21,6 @@ def write_class(class_detail):
         print(f'{sys.argv[0]}: {class_detail[1]}', file=sys.stderr)
         sys.exit(1)
     details = class_detail[1]
-    print (details)
     print('-------------')
     print('Class Details')
     print('-------------')
@@ -37,7 +36,7 @@ def write_class(class_detail):
     print('--------------')
     space_num = 3
     if details['courseid'] != '':
-        print('Course Id:', details['courseid'])
+        print('Course Id: ' + details['courseid'])
     else:
         print('Course Id:')
     for cross in details['deptcoursenums']:
