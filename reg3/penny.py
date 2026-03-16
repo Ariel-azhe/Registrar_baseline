@@ -68,6 +68,14 @@ def search_courses(environ, start_response):
                     <input type="text" name="titleInput" autofocus>
                     <input type="submit" name="submitButton" value="Go">
                 </form>
+                <table>
+                    <tr>
+                        <th>classid</th>
+                        <th>dept</th>
+                        <th>coursenuM?</th>
+                    </tr>
+                </table>
+
                 <br>
                 {commons.get_footer()}
             </body>
