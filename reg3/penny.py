@@ -72,7 +72,9 @@ def search_courses(environ, start_response):
                     <tr>
                         <th>classid</th>
                         <th>dept</th>
-                        <th>coursenuM?</th>
+                        <th>Num</th>
+                        <th>Area</th>
+                        <th>Title</th>
                     </tr>
                 </table>
 
