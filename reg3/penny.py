@@ -18,7 +18,6 @@ app = flask.Flask(__name__)
 #-----------------------------------------------------------------------
 
 @app.route('/', methods=['GET'])
-@app.route('/index', methods=['GET'])
 def index(environ, start_response):
 
     html_code = f'''
@@ -44,14 +43,14 @@ def index(environ, start_response):
 
 @app.route("/searchcourses, methods=['GET']")
 def search_courses(environ, start_response):
-    print("hello")
+    print("search_courses")
     
     html_code = f'''
         console.log("hello")
         <!DOCTYPE html>
         <html>
             <head>
-                <title>localhost:5001.com</title>
+                <title>localhost:5001</title>
             </head>
             <body>
                 <h1>Registrar's Office</h1>
@@ -59,16 +58,16 @@ def search_courses(environ, start_response):
                 <hr>
                 <form action="/searchcourses" method="get">
                     Dept:
-                    <input type="text" name="deptInput" autofocus>
+                    <input type="text" name="Department" id="deptInput" autofocus>
                     Number:
-                    <input type="text" name="coursenumInput" autofocus>
+                    <input type="text" name = "Coursenum" id="coursenumInput" autofocus>
                     Area:
-                    <input type="text" name="areaInput" autofocus>
+                    <input type="text" name = "Area" id="areaInput" autofocus>
                     Title:
-                    <input type="text" name="titleInput" autofocus>
-                    <input type="submit" name="submitButton" value="Go">
+                    <input type="text" name = "Title" id="titleInput" autofocus>
+                    <input type="submit" id="submitButton" value="Go">
                 </form>
-                <table>
+                <table id="overviewsTable">
                     <tr>
                         <th>classid</th>
                         <th>dept</th>
@@ -83,6 +82,7 @@ def search_courses(environ, start_response):
             </body>
         </html>
         '''
+    print(html_code)
 
     content_header = ("content-type", "text/html; charset=utf-8")
     headers = [content_header]
@@ -103,13 +103,14 @@ def convert_to_html(courses):
             {html.escape(course['area'])}
             {html.escape(course['title'])}<br>
             '''
+    print(html_code)
     return html_code
 
 #-----------------------------------------------------------------------
 
 @app.route('/searchresults', methods=['GET'])
 def search_results(environ, start_response):
-
+    print("search_results")
     args_str = environ.get('QUERY_STRING', '')
     args = parseargs.parse(args_str)
     course = args.get('course', '')
@@ -131,7 +132,7 @@ def search_results(environ, start_response):
         <!DOCTYPE html>
         <html>
             <head>
-                <title>localhost:5001.com</title>
+                <title>localhost:5001</title>
             </head>
             <body>
                 {convert_to_html(courses)}
@@ -139,7 +140,7 @@ def search_results(environ, start_response):
             </body>
         </html>
         '''
-
+    print(html_code)
     content_header = ('content-type', 'text/html; charset=utf-8')
     #cookie = http.cookies.SimpleCookie()
     #cookie[’prev_author’] = prev_author
@@ -180,10 +181,13 @@ def app(environ, start_response):
     path = environ.get('PATH_INFO', '').strip('/')
     
     if path in ('', 'index'):
+        print("entered index")
         return index(environ, start_response)
     if path == 'searchresults':
+        print("entered results")
         return search_results(environ, start_response)
     if path == 'searchcourses':
+        print("entered courses")
         return search_courses(environ, start_response)
     
     
