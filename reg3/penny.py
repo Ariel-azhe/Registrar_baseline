@@ -17,36 +17,29 @@ app = flask.Flask(__name__)
 
 #-----------------------------------------------------------------------
 
-@app.route('/', methods=['GET'])
+@app.route("/, methods=['GET']")
 def index(environ, start_response):
+    print("index")
 
-    html_code = f'''
-        <!DOCTYPE html>
-        <html>
-            <head>
-                <title>localhost:5001.com</title>
-            </head>
-            <body>
-                Click to <a href="/searchcourses">begin</a>.<br>
-                <br>
-                {commons.get_footer()}
-            </body>
-        </html>
-        '''
+    args_str = environ.get('QUERY_STRING', '')
+    print(args_str)
+    args = parseargs.parse(args_str)
+    print(args)
+    course = args
+    print(course)
+    key = course.get("department")
+    print(key)
 
-    content_header = ("content-type", "text/html; charset=utf-8")
-    headers = [content_header]
-    start_response("200 OK", headers)
-    return [html_code.encode("utf-8")]
+    if key is None:
+        prev_author = '(None)'
+        courses = []
 
-#-----------------------------------------------------------------------
-
-@app.route("/searchcourses, methods=['GET']")
-def search_courses(environ, start_response):
-    print("search_courses")
+    else: 
+        print(len(course))
+        prev_author = course
+        courses = database.search_courses(course) # Exception handling omitted
     
     html_code = f'''
-        console.log("hello")
         <!DOCTYPE html>
         <html>
             <head>
@@ -56,26 +49,35 @@ def search_courses(environ, start_response):
                 <h1>Registrar's Office</h1>
                 <h2>Class Search</h2>
                 <hr>
-                <form action="/searchcourses" method="get">
+                <form action="/" method="get">
                     Dept:
-                    <input type="text" name="Department" id="deptInput" autofocus>
+                    <input type="text" name="department" id="deptInput" autofocus>
+                    <br>
                     Number:
-                    <input type="text" name = "Coursenum" id="coursenumInput" autofocus>
+                    <input type="text" name = "course number" id="coursenumInput">
+                    <br>
                     Area:
-                    <input type="text" name = "Area" id="areaInput" autofocus>
+                    <input type="text" name = "area" id="areaInput">
+                    <br>
                     Title:
-                    <input type="text" name = "Title" id="titleInput" autofocus>
+                    <input type="text" name = "title" id="titleInput">
+                    <br>
                     <input type="submit" id="submitButton" value="Go">
                 </form>
-                <table id="overviewsTable">
+                <table id="overviewsTable" border = "1" cellpadding = "1" cellspacing = "1">
                     <tr>
-                        <th>classid</th>
-                        <th>dept</th>
-                        <th>Num</th>
-                        <th>Area</th>
-                        <th>Title</th>
+                        <th><strong>ClassId</strong></th>
+                        <th><strong>Dept</strong></th>
+                        <th><strong>Num</strong></th>
+                        <th><strong>Area</strong></th>
+                        <th><strong>Title</strong></th>
                     </tr>
+                    {convert_to_html(courses)}
+                    <tbody>
+
+                    </tbody>
                 </table>
+                
 
                 <br>
                 {commons.get_footer()}
@@ -93,15 +95,22 @@ def search_courses(environ, start_response):
 
 def convert_to_html(courses):
 
+    print("Entered convert")
     if len(courses) == 0:
         return '(None)'
     html_code = ''
     for course in courses:
+        print("length in courses")
+        print(courses)
         html_code += f'''
-            <strong>{html.escape(course['dept'])}</strong>:
-            {html.escape(course['coursenum'])}:
-            {html.escape(course['area'])}
-            {html.escape(course['title'])}<br>
+            console.log("hello")
+            <tr>
+                <td>{(course['classid'])}</td> 
+                <td>{html.escape(course['dept'])}</td> 
+                <td>{(course['coursenum'])}</td>
+                <td>{html.escape(course['area'])}</td> 
+                <td>{html.escape(course['title'])}</td> 
+            </tr>
             '''
     print(html_code)
     return html_code
@@ -126,7 +135,7 @@ def search_results(environ, start_response):
 
     else:
         prev_author = course
-        courses = database.search_courses(course) # Exception handling omitted
+        courses = database.index(course) # Exception handling omitted
 
     html_code = f'''
         <!DOCTYPE html>
@@ -186,10 +195,6 @@ def app(environ, start_response):
     if path == 'searchresults':
         print("entered results")
         return search_results(environ, start_response)
-    if path == 'searchcourses':
-        print("entered courses")
-        return search_courses(environ, start_response)
-    
     
 
     return not_found(environ, start_response)

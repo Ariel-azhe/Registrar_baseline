@@ -50,7 +50,7 @@ def run_test(server_url, browser_process, input_values):
 
     try:
         page = browser_process.new_page()
-        page.goto(server_url)
+        page.goto(server_url, timeout=0)
 
         print(server_url)
         dept_input = page.locator('#deptInput')

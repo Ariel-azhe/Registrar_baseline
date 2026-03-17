@@ -125,6 +125,9 @@ def search_courses(args):
             isolation_level=None, uri=True) as connection:
         with contextlib.closing(connection.cursor()) as cursor:
             dict = args
+            print("print args below?")
+            print(f"this is args?: {args}")
+
             # Select the columns that should be
             # displayed with corresponding courseids
             prepare = []
@@ -135,12 +138,12 @@ def search_courses(args):
                 WHERE 
                 courses.courseid = classes.courseid and courses.courseid = crosslistings.courseid
                 '''
-            if dict['dept'] != '':
+            if dict['department'] != '':
                 stmt_str += ' AND crosslistings.dept LIKE ? '
-                prepare.append(f'%{dict['dept'].upper()}%')
-            if dict['coursenum'] != '':
+                prepare.append(f'%{dict['department'].upper()}%')
+            if dict['course number'] != '':
                 stmt_str += ' AND coursenum LIKE ? '
-                prepare.append(f'%{dict['coursenum']}%')
+                prepare.append(f'%{dict['course number']}%')
             if dict['area'] != '':
                 stmt_str += ' AND area LIKE ? '
                 prepare.append(f'%{dict['area'].upper()}%')

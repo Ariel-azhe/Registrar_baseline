@@ -1,28 +1,32 @@
 ------------------------------------------------------------------------
 dept: |COS|
+Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "http://localhost:5001/", waiting until "load"
+
+------------------------------------------------------------------------
+dept: |COS|
+coursenum: |2|
+area: |qr|
+title: |intro|
+http://localhost:5001
 Traceback (most recent call last):
-  File "/Users/grace/Registrar_baseline/reg3/testregoverviewsgiven.py", line 97, in <module>
+  File "/Users/grace/Registrar_baseline/reg3/testregoverviewsgiven.py", line 98, in <module>
     main()
     ~~~~^^
-  File "/Users/grace/Registrar_baseline/reg3/testregoverviewsgiven.py", line 87, in main
+  File "/Users/grace/Registrar_baseline/reg3/testregoverviewsgiven.py", line 91, in main
     run_test(server_url, browser_process,
     ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        {'dept':'COS'})
-        ^^^^^^^^^^^^^^^
-  File "/Users/grace/Registrar_baseline/reg3/testregoverviewsgiven.py", line 60, in run_test
-    dept_input.fill(input_values.get('dept', ''))
-    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/grace/Registrar_baseline/.venv/lib/python3.13/site-packages/playwright/sync_api/_generated.py", line 15983, in fill
-    self._sync(
-    ~~~~~~~~~~^
-        self._impl_obj.fill(
-        ^^^^^^^^^^^^^^^^^^^^
-            value=value, timeout=timeout, noWaitAfter=no_wait_after, force=force
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        )
-        ^
-    )
-    ^
+        {'dept':'COS', 'coursenum':'2', 'area':'qr',
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        'title':'intro'})
+        ^^^^^^^^^^^^^^^^^
+  File "/Users/grace/Registrar_baseline/reg3/testregoverviewsgiven.py", line 70, in run_test
+    print_flush(overviews_table.inner_text())
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/grace/Registrar_baseline/.venv/lib/python3.13/site-packages/playwright/sync_api/_generated.py", line 17087, in inner_text
+    self._sync(self._impl_obj.inner_text(timeout=timeout))
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/Users/grace/Registrar_baseline/.venv/lib/python3.13/site-packages/playwright/_impl/_sync_base.py", line 113, in _sync
     self._dispatcher_fiber.switch()
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
