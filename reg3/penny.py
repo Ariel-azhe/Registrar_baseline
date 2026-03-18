@@ -50,7 +50,7 @@ def index(environ, start_response):
                 <title>localhost:5001</title>
             </head>
             <body>
-                <h1>Registrar's Office</h1>
+                {commons.get_header()}
                 <h2>Class Search</h2>
                 <hr>
                 <form action ="/" method="get">
@@ -68,7 +68,7 @@ def index(environ, start_response):
                     <br>
                     <input type="submit" id="submitButton" value="Go">
                 </form>
-                <table id="overviewsTable" border = "1" cellpadding = "1" cellspacing = "1">
+                <table id="overviewsTable" border = "1" cellpadding = "1" cellspacing = "2">
                     <tr>
                         <th><strong>ClassId</strong></th>
                         <th><strong>Dept</strong></th>
@@ -82,7 +82,6 @@ def index(environ, start_response):
                     </tbody>
                 </table>
                 
-
                 <br>
                 {commons.get_footer()}
             </body>
@@ -129,9 +128,10 @@ def convert_to_html_details(details):
         # print("length in courses")
         # print(courses)
     html_code += f'''
-        <h1>Registrar's Office</h1>
+        {commons.get_header()}
+        <hr>
         <h2> Class Details </h2>
-        <table id="classDetailsTable" border = "1" cellpadding = "1" cellspacing = "1">
+        <table id="classDetailsTable" border = "1" cellpadding = "1" cellspacing = "2">
                 <tr>
                     <td><strong>Class Id</strong></td>
                     <td>{details['classid']}</td>
@@ -159,7 +159,7 @@ def convert_to_html_details(details):
 
             </table>
             <h2> Course Details </h2>
-            <table id="courseDetailsTable" border = "1" cellpadding = "1" cellspacing = "1">
+            <table id="courseDetailsTable" border = "1" cellpadding = "1" cellspacing = "2">
                 <tr>
                     <td><strong>Course Id</strong></td>
                     <td>{details['courseid']}</td>
@@ -180,6 +180,10 @@ def convert_to_html_details(details):
         <tr>
             <td><strong>Title</strong></td>
             <td>{details['title']}</td>
+        </tr>
+        <tr>
+            <td><strong>Description</strong></td>
+            <td>{details['descrip']}</td>
         </tr>
         <tr>
             <td><strong>Prerequisites</strong></td>
@@ -229,6 +233,8 @@ def reg_details(environ, start_response):
             </head>
             <body>
                 {convert_to_html_details(details)}
+                <hr>
+                <p>Click here to do <a href="/">another class search</a></p>
                 {commons.get_footer()}
             </body>
         </html>

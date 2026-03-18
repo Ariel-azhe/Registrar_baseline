@@ -5,12 +5,22 @@
 # Author: Bob Dondero
 #-----------------------------------------------------------------------
 
+def get_header():
+
+    html_str = f'''
+        <h1>Registrar's Office</h1>
+        '''
+
+    return html_str
+
+#-----------------------------------------------------------------------
+
 def get_footer():
 
     html_str = f'''
         <hr>
         Created by <a href="https://www.cs.princeton.edu/~rdondero">
-        Bob Dondero</a>
+        Ariel & Grace</a>
         <hr>
         '''
 
