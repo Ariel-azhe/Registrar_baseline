@@ -108,7 +108,7 @@ def convert_to_html(courses):
         # print(courses)
         html_code += f'''
             <tr>
-                <td><a href="/regdetails?classid=8361" </a>{course['classid']}</td> 
+                <td><a href="/regdetails?classid={course['classid']}" </a>{course['classid']}</td> 
                 <td>{html.escape(course['dept'])}</td> 
                 <td>{(course['coursenum'])}</td>
                 <td>{html.escape(course['area'])}</td> 
