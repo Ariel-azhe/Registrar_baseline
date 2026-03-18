@@ -52,7 +52,7 @@ def search_details(args):
     with sqlite3.connect(_DATABASE_URL + '?mode=ro',
             isolation_level=None, uri=True) as connection:
         with contextlib.closing(connection.cursor()) as cursor:
-            classid = args[1]
+            classid = args
             # Select the columns that should be
             # displayed with corresponding courseids
             table = {'classid':'', 'days':'',
@@ -138,22 +138,24 @@ def search_courses(args):
                 WHERE 
                 courses.courseid = classes.courseid and courses.courseid = crosslistings.courseid
                 '''
-            if dict['department'] != '':
-                stmt_str += ' AND crosslistings.dept LIKE ? '
-                prepare.append(f'%{dict['department'].upper()}%')
-            if dict['course number'] != '':
-                stmt_str += ' AND coursenum LIKE ? '
-                prepare.append(f'%{dict['course number']}%')
-            if dict['area'] != '':
-                stmt_str += ' AND area LIKE ? '
-                prepare.append(f'%{dict['area'].upper()}%')
-            if dict['title'] != '':
-                stmt_str += '''
-                  AND title LIKE ? ESCAPE '/'
-                  '''
-                prepare.append(f'%{escape_x(dict['title'])}%')
+            if len(args) == 4:
+                if dict['department'] != '':
+                    stmt_str += ' AND crosslistings.dept LIKE ? '
+                    prepare.append(f'%{dict['department'].upper()}%')
+                if dict['course number'] != '':
+                    stmt_str += ' AND coursenum LIKE ? '
+                    prepare.append(f'%{dict['course number']}%')
+                if dict['area'] != '':
+                    stmt_str += ' AND area LIKE ? '
+                    prepare.append(f'%{dict['area'].upper()}%')
+                if dict['title'] != '':
+                    stmt_str += '''
+                    AND title LIKE ? ESCAPE '/'
+                    '''
+                    prepare.append(f'%{escape_x(dict['title'])}%')
 
             stmt_str += 'ORDER BY dept, coursenum, classid'
+            print(stmt_str)
             cursor.execute(stmt_str, prepare)
             tab = cursor.fetchall()
             table = []
