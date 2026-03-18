@@ -1,49 +1,44 @@
 ------------------------------------------------------------------------
 dept: |COS|
-Page.goto: Timeout 30000ms exceeded.
-Call log:
-  - navigating to "http://localhost:5001/", waiting until "load"
-
+http://localhost:5001
+ClassId	Dept	Num	Area	Title
+8291	COS	116	ST	The Computational Universe
+8292	COS	126	QR	General Computer Science
+8293	COS	126	QR	General Computer Science
+8308	COS	217	QR	Introduction to C_Science Programming Systems
+8313	COS	226	QR	Algorithms and Data Structures
+9032	COS	233	ST	An Integrated, Quantitative Introduction to the Natural Sciences II
+9033	COS	233	ST	An Integrated, Quantitative Introduction to the Natural Sciences II
+9037	COS	234		An Integrated, Quantitative Introduction to the Natural Sciences II
+9038	COS	236		An Integrated, Quantitative Introduction to the Natural Sciences IV
+8597	COS	306	ST	Introduction to Logic Design
+9363	COS	314	QR	Computer and Electronic Music through Programming, Performance, and Composition
+8320	COS	320		Compiling Techniques
+8321	COS	333		Advanced C%Science Programming Techniques
+9240	COS	342	QR	Introduction to Graph Theory
+8322	COS	398		Junior Independent Work (B.S.E. candidates only)
+10009	COS	401		Introduction to Machine Translation
+8323	COS	423		Theory of Algorithms
+8324	COS	424		Interacting with Data
+8325	COS	426		Computer Graphics
+8326	COS	433		Cryptography
+8327	COS	435		Information Retrieval, Discovery, and Delivery
+8328	COS	444	SA	Internet Auctions: Theory and Practice
+8329	COS	451		Computational Geometry
+8330	COS	461		Computer Networks
+8331	COS	498		Senior Independent Work (B.S.E. candidates only)
+8332	COS	522		Computational Complexity
+10244	COS	586		Topics in STEP: Information Technology and Public Policy
+8333	COS	598A		Advanced Topics in Computer Science: Economic and Systems Design for Electronic Marketplaces
+8334	COS	598B		Advanced Topics in Computer Science: Algorithms and Complexity
+8335	COS	598C		Advanced Topics in Computer Science: Systems for Large Data
+8336	COS	598D		Advanced Topics in Computer Science: Formal Methods in Networking
 ------------------------------------------------------------------------
 dept: |COS|
 coursenum: |2|
 area: |qr|
 title: |intro|
 http://localhost:5001
-Traceback (most recent call last):
-  File "/Users/grace/Registrar_baseline/reg3/testregoverviewsgiven.py", line 98, in <module>
-    main()
-    ~~~~^^
-  File "/Users/grace/Registrar_baseline/reg3/testregoverviewsgiven.py", line 91, in main
-    run_test(server_url, browser_process,
-    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        {'dept':'COS', 'coursenum':'2', 'area':'qr',
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        'title':'intro'})
-        ^^^^^^^^^^^^^^^^^
-  File "/Users/grace/Registrar_baseline/reg3/testregoverviewsgiven.py", line 70, in run_test
-    print_flush(overviews_table.inner_text())
-                ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "/Users/grace/Registrar_baseline/.venv/lib/python3.13/site-packages/playwright/sync_api/_generated.py", line 17087, in inner_text
-    self._sync(self._impl_obj.inner_text(timeout=timeout))
-    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/grace/Registrar_baseline/.venv/lib/python3.13/site-packages/playwright/_impl/_sync_base.py", line 113, in _sync
-    self._dispatcher_fiber.switch()
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "/Users/grace/Registrar_baseline/.venv/lib/python3.13/site-packages/playwright/sync_api/_context_manager.py", line 56, in greenlet_main
-    self._loop.run_until_complete(self._connection.run_as_sync())
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 707, in run_until_complete
-    self.run_forever()
-    ~~~~~~~~~~~~~~~~^^
-  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 678, in run_forever
-    self._run_once()
-    ~~~~~~~~~~~~~~^^
-  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 1995, in _run_once
-    event_list = self._selector.select(timeout)
-  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/selectors.py", line 548, in select
-    kev_list = self._selector.control(None, max_ev, timeout)
-KeyboardInterrupt
-Future exception was never retrieved
-future: <Future finished exception=TargetClosedError('Target page, context or browser has been closed')>
-playwright._impl._errors.TargetClosedError: Target page, context or browser has been closed
+ClassId	Dept	Num	Area	Title
+8308	COS	217	QR	Introduction to C_Science Programming Systems
+9240	COS	342	QR	Introduction to Graph Theory

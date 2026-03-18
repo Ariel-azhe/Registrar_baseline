@@ -22,17 +22,18 @@ def index(environ, start_response):
     print("index")
 
     args_str = environ.get('QUERY_STRING', '')
-    print(args_str)
+    # print(args_str)
     args = parseargs.parse(args_str)
-    print(args)
+    # print(args)
     course = args
-    print(course)
+    # print(course)
     key = course.get("department")
-    print(key)
+    print("key is", key)
 
     if key is None:
         prev_author = '(None)'
         courses = []
+        print("courses none and is:", courses)
 
     else: 
         print(len(course))
@@ -103,7 +104,6 @@ def convert_to_html(courses):
         print("length in courses")
         print(courses)
         html_code += f'''
-            console.log("hello")
             <tr>
                 <td>{(course['classid'])}</td> 
                 <td>{html.escape(course['dept'])}</td> 

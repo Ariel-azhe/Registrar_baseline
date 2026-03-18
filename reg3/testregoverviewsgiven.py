@@ -85,12 +85,13 @@ def main():
         else:
             browser_process = pw.firefox.launch()
 
-        run_test(server_url, browser_process,
-            {'dept':'COS'})
+        run_test(server_url, browser_process, {})
+        # run_test(server_url, browser_process,
+            # {'dept':'COS'})
 
-        run_test(server_url, browser_process,
-            {'dept':'COS', 'coursenum':'2', 'area':'qr',
-            'title':'intro'})
+        #run_test(server_url, browser_process,
+            #{'dept':'COS', 'coursenum':'2', 'area':'qr',
+            #title':'intro'})
 
         # Add more tests here.
 
