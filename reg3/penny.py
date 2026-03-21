@@ -10,6 +10,7 @@ import flask
 import commons
 import database
 import parseargs
+import http.cookies
 
 #-----------------------------------------------------------------------
 
@@ -17,30 +18,31 @@ app = flask.Flask(__name__)
 
 #-----------------------------------------------------------------------
 
-@app.route("/, methods=['GET']")
-@app.route('/index', methods=['GET'])
-def index(environ, start_response):
+@app.route('/', methods=['GET'])
+def index():
     print("index")
 
-    args_str = environ.get('QUERY_STRING', '')
-    print(args_str)
-    args = parseargs.parse(args_str)
-    print(args)
-    course = args
-    # print(course)
-    key = course.get("department")
-    print("key is", key)
+    dept = flask.request.args.get('dept')
+    if dept is None:
+        dept = ''
+    dept = dept.strip()
+    coursenum = flask.request.args.get('coursenum')
+    if coursenum is None:
+        coursenum = ''
+    coursenum = coursenum.strip()
+    area = flask.request.args.get('area')
+    if area is None:
+        area = ''
+    area = area.strip()
+    title = flask.request.args.get('title')
+    if title is None:
+        title = ''
+    title = title.strip()
+    course = {'dept': dept, 'coursenum':coursenum, 'area':area, 'title':title}
+    print(course)
 
-    if key is None:
-        prev_author = '(None)'
-        courses = []
-        print("courses none and is:")
-        
-
-    else: 
-        print(len(course))
-        prev_author = course
-        
+    prev_query = f'?dept={dept}&coursenum={coursenum}&area={area}&title={title}'
+    print("prev_query set to:", prev_query)
     courses = database.search_courses(course) # Exception handling omitted
 
     html_code = f'''
@@ -55,10 +57,10 @@ def index(environ, start_response):
                 <hr>
                 <form action ="/" method="get">
                     Dept:
-                    <input type="text" name="department" id="deptInput" autofocus>
+                    <input type="text" name="dept" id="deptInput" autofocus>
                     <br>
                     Number:
-                    <input type="text" name = "course number" id="coursenumInput">
+                    <input type="text" name = "coursenum" id="coursenumInput">
                     <br>
                     Area:
                     <input type="text" name = "area" id="areaInput">
@@ -89,10 +91,19 @@ def index(environ, start_response):
         '''
     #print(html_code)
 
+    response = flask.make_response(html_code)
+    response.set_cookie('prev_query', prev_query)
+    return response
+
+    '''
     content_header = ("content-type", "text/html; charset=utf-8")
-    headers = [content_header]
+    cookie = http.cookies.SimpleCookie()
+    cookie['prev_query'] = prev_query
+    cookie_header = ('Set-Cookie', cookie['prev_query'].OutputString())
+    headers = [content_header, cookie_header]
     start_response("200 OK", headers)
     return [html_code.encode("utf-8")]
+    '''
 
 #-----------------------------------------------------------------------
 
@@ -206,24 +217,19 @@ def convert_to_html_details(details):
 #-----------------------------------------------------------------------
 
 @app.route('/regdetails', methods=['GET'])
-def reg_details(environ, start_response):
+def reg_details():
     print("reg_details")
-    args_str = environ.get('QUERY_STRING', '')
-    args = parseargs.parse(args_str)
-    classid = args.get('classid', '')
+    classid = flask.request.args.get('classid')
+    if classid is None:
+        classid = ''
     classid = classid.strip()
 
     # fix later
+    prev_query = flask.request.cookies.get('prev_query')
 
-    if classid == '':
-        prev_author = '(None)'
-        details = []
-
-    else:
-        prev_author = classid
-        results = database.search_details(classid) # Exception handling omitted
-        details = results[1]
-        print("details:", details)
+    results = database.search_details(classid) # Exception handling omitted
+    details = results[1]
+    print("details:", details)
 
     html_code = f'''
         <!DOCTYPE html>
@@ -234,24 +240,26 @@ def reg_details(environ, start_response):
             <body>
                 {convert_to_html_details(details)}
                 <hr>
-                <p>Click here to do <a href="/">another class search</a></p>
+                <p>Click here to do <a href="/{prev_query}">another class search</a></p>
                 {commons.get_footer()}
             </body>
         </html>
         '''
     # print(html_code)
-    content_header = ('content-type', 'text/html; charset=utf-8')
+    # content_header = ('content-type', 'text/html; charset=utf-8')
     #cookie = http.cookies.SimpleCookie()
     #cookie[’prev_author’] = prev_author
     #cookie_header = (’Set-Cookie’, cookie[’prev_author’].OutputString())
     #headers = [content_header, cookie_header]
-    headers = [content_header]
-    start_response('200 OK', headers)
-    return [html_code.encode('utf-8')]
+    # headers = [content_header]
+    # start_response('200 OK', headers)
+    # return [html_code.encode('utf-8')]
+    response = flask.make_response(html_code)
+    return response
 
 
 #-----------------------------------------------------------------------
-def not_found(environ, start_response):
+def not_found():
 
     html_code = '''
         <!DOCTYPE html>
@@ -268,23 +276,7 @@ def not_found(environ, start_response):
         </html>
         '''
 
-    content_header = ("content-type", "text/html; charset=utf-8")
-    headers = [content_header]
-    start_response("404 Not Found", headers)
-    return [html_code.encode("utf-8")]
+    response = flask.make_response(html_code)
+    return response
 
 #-----------------------------------------------------------------------
-
-def app(environ, start_response):
-    print("Entered penny")
-    path = environ.get('PATH_INFO', '').strip('/')
-    
-    if path in ('', 'index'):
-        print("entered index")
-        return index(environ, start_response)
-    if path == 'regdetails':
-        print("entered results")
-        return reg_details(environ, start_response)
-    
-
-    return not_found(environ, start_response)

@@ -19,14 +19,11 @@ def main():
         port = int(sys.argv[1])
     except Exception:
         print(f'{sys.argv[0]}: Port must be an integer.',
-            file=sys.stderr)
+              file=sys.stderr)
         sys.exit(1)
 
     try:
-        httpd = wsgiref.simple_server.make_server(
-            '0.0.0.0', port, penny.app)
-        print('Listening on port ' + str(port))
-        httpd.serve_forever()
+        penny.app.run(host='0.0.0.0', port=port, debug=True)
     except Exception as ex:
         print(f'{sys.argv[0]}: {ex}', file=sys.stderr)
         sys.exit(1)

@@ -139,12 +139,12 @@ def search_courses(args):
                 courses.courseid = classes.courseid and courses.courseid = crosslistings.courseid
                 '''
             if len(args) == 4:
-                if dict['department'] != '':
+                if dict['dept'] != '':
                     stmt_str += ' AND crosslistings.dept LIKE ? '
-                    prepare.append(f'%{dict['department'].upper()}%')
-                if dict['course number'] != '':
+                    prepare.append(f'%{dict['dept'].upper()}%')
+                if dict['coursenum'] != '':
                     stmt_str += ' AND coursenum LIKE ? '
-                    prepare.append(f'%{dict['course number']}%')
+                    prepare.append(f'%{dict['coursenum']}%')
                 if dict['area'] != '':
                     stmt_str += ' AND area LIKE ? '
                     prepare.append(f'%{dict['area'].upper()}%')
