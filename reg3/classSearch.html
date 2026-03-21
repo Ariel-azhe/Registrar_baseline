@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>localhost:5001</title>
+    </head>
+    <body>
+        {{head}}
+        <h2>Class Search</h2>
+        <hr>
+        <form action ="/" method="get">
+            Dept:
+            <input type="text" name="department" id="deptInput" autofocus>
+            <br>
+            Number:
+            <input type="text" name = "course number" id="coursenumInput">
+            <br>
+            Area:
+            <input type="text" name = "area" id="areaInput">
+            <br>
+            Title:
+            <input type="text" name = "title" id="titleInput">
+            <br>
+            <input type="submit" id="submitButton" value="Go">
+        </form>
+        <table id="overviewsTable" border = "1" cellpadding = "1" cellspacing = "2">
+            <tr>
+                <th><strong>ClassId</strong></th>
+                <th><strong>Dept</strong></th>
+                <th><strong>Num</strong></th>
+                <th><strong>Area</strong></th>
+                <th><strong>Title</strong></th>
+            </tr>
+            {{listed_courses}}
+            <tbody
+            </tbody>
+        </table>
+        
+        <br>
+        {{foot}}
+    </body>
+</html>

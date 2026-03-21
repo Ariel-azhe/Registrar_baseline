@@ -138,6 +138,7 @@ def search_courses(args):
                 WHERE 
                 courses.courseid = classes.courseid and courses.courseid = crosslistings.courseid
                 '''
+            
             if len(args) == 4:
                 if dict['department'] != '':
                     stmt_str += ' AND crosslistings.dept LIKE ? '

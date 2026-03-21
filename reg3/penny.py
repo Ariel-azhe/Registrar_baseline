@@ -6,6 +6,7 @@
 #-----------------------------------------------------------------------
 
 import html # html_code.escape() is used to thwart XSS attacks
+import http.cookies
 import flask
 import commons
 import database
@@ -27,72 +28,33 @@ def index(environ, start_response):
     args = parseargs.parse(args_str)
     print(args)
     course = args
-    # print(course)
     key = course.get("department")
     print("key is", key)
 
+    # Dealing with empty input
     if key is None:
-        prev_author = '(None)'
+        prev_query = '(None)' # OG
+        prev_dept = '(None)' # that was here b4 we implemented cookies
         courses = []
         print("courses none and is:")
         
-
     else: 
-        print(len(course))
-        prev_author = course
-        
+        prev_query = course # OG
+        prev_dept = args['dept']
+    
+    prev_dept = flask.request.cookies.get('prev_dept')
+    if prev_dept is None:
+        prev_dept = '(None)'
+
     courses = database.search_courses(course) # Exception handling omitted
 
-    html_code = f'''
-        <!DOCTYPE html>
-        <html>
-            <head>
-                <title>localhost:5001</title>
-            </head>
-            <body>
-                {commons.get_header()}
-                <h2>Class Search</h2>
-                <hr>
-                <form action ="/" method="get">
-                    Dept:
-                    <input type="text" name="department" id="deptInput" autofocus>
-                    <br>
-                    Number:
-                    <input type="text" name = "course number" id="coursenumInput">
-                    <br>
-                    Area:
-                    <input type="text" name = "area" id="areaInput">
-                    <br>
-                    Title:
-                    <input type="text" name = "title" id="titleInput">
-                    <br>
-                    <input type="submit" id="submitButton" value="Go">
-                </form>
-                <table id="overviewsTable" border = "1" cellpadding = "1" cellspacing = "2">
-                    <tr>
-                        <th><strong>ClassId</strong></th>
-                        <th><strong>Dept</strong></th>
-                        <th><strong>Num</strong></th>
-                        <th><strong>Area</strong></th>
-                        <th><strong>Title</strong></th>
-                    </tr>
-                    {convert_to_html(courses)}
-                    <tbody>
-
-                    </tbody>
-                </table>
-                
-                <br>
-                {commons.get_footer()}
-            </body>
-        </html>
-        '''
-    #print(html_code)
-
-    content_header = ("content-type", "text/html; charset=utf-8")
-    headers = [content_header]
-    start_response("200 OK", headers)
-    return [html_code.encode("utf-8")]
+    html_code = flask.render_template('classSearch.html',
+        head = commons.get_header(),
+        foot = commons.get_footer(),
+        listed_courses = convert_to_html(courses),
+        prev_dept=prev_dept)
+    response = flask.make_response(html_code)
+    return response
 
 #-----------------------------------------------------------------------
 
@@ -125,8 +87,6 @@ def convert_to_html_details(details):
     if len(details) == 0:
         return '(None)'
     html_code = ''
-        # print("length in courses")
-        # print(courses)
     html_code += f'''
         {commons.get_header()}
         <hr>
@@ -216,11 +176,11 @@ def reg_details(environ, start_response):
     # fix later
 
     if classid == '':
-        prev_author = '(None)'
+        prev_query = '(None)' # OG
         details = []
 
     else:
-        prev_author = classid
+        prev_query = classid # OG
         results = database.search_details(classid) # Exception handling omitted
         details = results[1]
         print("details:", details)
@@ -241,12 +201,9 @@ def reg_details(environ, start_response):
         '''
     # print(html_code)
     content_header = ('content-type', 'text/html; charset=utf-8')
-    #cookie = http.cookies.SimpleCookie()
-    #cookie[’prev_author’] = prev_author
-    #cookie_header = (’Set-Cookie’, cookie[’prev_author’].OutputString())
-    #headers = [content_header, cookie_header]
     headers = [content_header]
     start_response('200 OK', headers)
+    prev_dept = flask.request.cookies.get('prev_dept')
     return [html_code.encode('utf-8')]
 
 
