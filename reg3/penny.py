@@ -23,26 +23,47 @@ def index():
     print("index")
 
     dept = flask.request.args.get('dept')
-    if dept is None:
-        dept = ''
-    dept = dept.strip()
     coursenum = flask.request.args.get('coursenum')
-    if coursenum is None:
-        coursenum = ''
-    coursenum = coursenum.strip()
     area = flask.request.args.get('area')
-    if area is None:
-        area = ''
-    area = area.strip()
     title = flask.request.args.get('title')
-    if title is None:
-        title = ''
-    title = title.strip()
+
+    prev_dept = flask.request.cookies.get('prev_dept')
+    prev_num = flask.request.cookies.get('prev_num')
+    prev_area = flask.request.cookies.get('prev_area')
+    prev_title = flask.request.cookies.get('prev_title')
+    if prev_dept is None:
+        prev_dept = ''
+    if prev_num is None:
+        prev_num = ''
+    if prev_area is None:
+        prev_area = ''
+    if prev_title is None:
+        prev_title = ''
+    if dept is None and coursenum is None and area is None and title is None:
+        print("all none")
+        dept = prev_dept
+        coursenum = prev_num
+        area = prev_area
+        title = prev_title
+    else:
+        if dept is None:
+            dept = ''
+        dept = dept.strip()
+        print("dept is ", dept)
+        if coursenum is None:
+            coursenum = ''
+        coursenum = coursenum.strip()
+        print("coursenum is ", coursenum)
+        if area is None:
+            area = ''
+        area = area.strip()
+        print("area is ", area)
+        if title is None:
+            title = ''
+        title = title.strip()
+        print("title is ", title)
     course = {'dept': dept, 'coursenum':coursenum, 'area':area, 'title':title}
     print(course)
-
-    prev_query = f'?dept={dept}&coursenum={coursenum}&area={area}&title={title}'
-    print("prev_query set to:", prev_query)
     courses = database.search_courses(course) # Exception handling omitted
 
     html_code = f'''
@@ -92,7 +113,10 @@ def index():
     #print(html_code)
 
     response = flask.make_response(html_code)
-    response.set_cookie('prev_query', prev_query)
+    response.set_cookie('prev_dept', dept)
+    response.set_cookie('prev_num', coursenum)
+    response.set_cookie('prev_area', area)
+    response.set_cookie('prev_title', title)
     return response
 
     '''
@@ -225,7 +249,11 @@ def reg_details():
     classid = classid.strip()
 
     # fix later
-    prev_query = flask.request.cookies.get('prev_query')
+    prev_dept = flask.request.cookies.get('prev_dept')
+    prev_num = flask.request.cookies.get('prev_num')
+    prev_area = flask.request.cookies.get('prev_area')
+    prev_title = flask.request.cookies.get('prev_title')
+    prev_query_str = f'?dept={prev_dept}&coursenum={prev_num}&area={prev_area}&title={prev_title}'
 
     results = database.search_details(classid) # Exception handling omitted
     details = results[1]
@@ -240,7 +268,7 @@ def reg_details():
             <body>
                 {convert_to_html_details(details)}
                 <hr>
-                <p>Click here to do <a href="/{prev_query}">another class search</a></p>
+                <p>Click here to do <a href="/{prev_query_str}">another class search</a></p>
                 {commons.get_footer()}
             </body>
         </html>
