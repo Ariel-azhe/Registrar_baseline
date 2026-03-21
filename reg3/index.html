@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>localhost:5001</title>
+    </head>
+    <body>
+        {% include 'header.html' %}
+        <h2>Class Search</h2>
+        <hr>
+        <form action ="/" method="get">
+            Dept:
+            <input type="text" name="department" id="deptInput" autofocus>
+            <br>
+            Number:
+            <input type="text" name = "course number" id="coursenumInput">
+            <br>
+            Area:
+            <input type="text" name = "area" id="areaInput">
+            <br>
+            Title:
+            <input type="text" name = "title" id="titleInput">
+            <br>
+            <input type="submit" id="submitButton" value="Go">
+        </form>
+        <table id="overviewsTable" border = "1" cellpadding = "1" cellspacing = "2">
+            <tr>
+                <th><strong>ClassId</strong></th>
+                <th><strong>Dept</strong></th>
+                <th><strong>Num</strong></th>
+                <th><strong>Area</strong></th>
+                <th><strong>Title</strong></th>
+            </tr>
+        {% for course in courses: %}
+            <tr>
+                <td><a href="/regdetails?classid={course['classid']}" </a>{{course['classid']}}</td> 
+                <td>{{course['dept']}}</td> 
+                <td>{{course['coursenum']}}</td>
+                <td>{{course['area']}}</td> 
+                <td>{{course['title']}}</td> 
+            </tr>
+        {% endfor %}
+        </table>
+        <br>
+        {% include 'footer.html' %}
+    </body>
+</html>

@@ -10,11 +10,10 @@ import flask
 import commons
 import database
 import parseargs
-import http.cookies
 
 #-----------------------------------------------------------------------
 
-app = flask.Flask(__name__)
+app = flask.Flask(__name__, template_folder='.')
 
 #-----------------------------------------------------------------------
 
@@ -23,14 +22,21 @@ def index():
     print("index")
 
     dept = flask.request.args.get('dept')
+    print("dept is ", dept)
     coursenum = flask.request.args.get('coursenum')
+    print("coursenum is ", coursenum)
     area = flask.request.args.get('area')
+    print("area is ", area)
     title = flask.request.args.get('title')
+    print("title is ", title)
 
     prev_dept = flask.request.cookies.get('prev_dept')
     prev_num = flask.request.cookies.get('prev_num')
     prev_area = flask.request.cookies.get('prev_area')
     prev_title = flask.request.cookies.get('prev_title')
+
+    print(f"d: {prev_dept} | n: {prev_num} | a: {prev_area} | t: {prev_title}")
+
     if prev_dept is None:
         prev_dept = ''
     if prev_num is None:
@@ -49,68 +55,27 @@ def index():
         if dept is None:
             dept = ''
         dept = dept.strip()
-        print("dept is ", dept)
+        
         if coursenum is None:
             coursenum = ''
         coursenum = coursenum.strip()
-        print("coursenum is ", coursenum)
+        
         if area is None:
             area = ''
         area = area.strip()
-        print("area is ", area)
+        
         if title is None:
             title = ''
         title = title.strip()
-        print("title is ", title)
+    
+
     course = {'dept': dept, 'coursenum':coursenum, 'area':area, 'title':title}
     print(course)
+    
     courses = database.search_courses(course) # Exception handling omitted
 
-    html_code = f'''
-        <!DOCTYPE html>
-        <html>
-            <head>
-                <title>localhost:5001</title>
-            </head>
-            <body>
-                {commons.get_header()}
-                <h2>Class Search</h2>
-                <hr>
-                <form action ="/" method="get">
-                    Dept:
-                    <input type="text" name="dept" id="deptInput" autofocus>
-                    <br>
-                    Number:
-                    <input type="text" name = "coursenum" id="coursenumInput">
-                    <br>
-                    Area:
-                    <input type="text" name = "area" id="areaInput">
-                    <br>
-                    Title:
-                    <input type="text" name = "title" id="titleInput">
-                    <br>
-                    <input type="submit" id="submitButton" value="Go">
-                </form>
-                <table id="overviewsTable" border = "1" cellpadding = "1" cellspacing = "2">
-                    <tr>
-                        <th><strong>ClassId</strong></th>
-                        <th><strong>Dept</strong></th>
-                        <th><strong>Num</strong></th>
-                        <th><strong>Area</strong></th>
-                        <th><strong>Title</strong></th>
-                    </tr>
-                    {convert_to_html(courses)}
-                    <tbody>
-
-                    </tbody>
-                </table>
-                
-                <br>
-                {commons.get_footer()}
-            </body>
-        </html>
-        '''
-    #print(html_code)
+    html_code = flask.render_template('index.html',
+                                      courses =courses)
 
     response = flask.make_response(html_code)
     response.set_cookie('prev_dept', dept)
@@ -119,38 +84,7 @@ def index():
     response.set_cookie('prev_title', title)
     return response
 
-    '''
-    content_header = ("content-type", "text/html; charset=utf-8")
-    cookie = http.cookies.SimpleCookie()
-    cookie['prev_query'] = prev_query
-    cookie_header = ('Set-Cookie', cookie['prev_query'].OutputString())
-    headers = [content_header, cookie_header]
-    start_response("200 OK", headers)
-    return [html_code.encode("utf-8")]
-    '''
-
 #-----------------------------------------------------------------------
-
-def convert_to_html(courses):
-
-    print("Entered convert")
-    if len(courses) == 0:
-        return '(None)'
-    html_code = ''
-    for course in courses:
-        # print("length in courses")
-        # print(courses)
-        html_code += f'''
-            <tr>
-                <td><a href="/regdetails?classid={course['classid']}" </a>{course['classid']}</td> 
-                <td>{html.escape(course['dept'])}</td> 
-                <td>{(course['coursenum'])}</td>
-                <td>{html.escape(course['area'])}</td> 
-                <td>{html.escape(course['title'])}</td> 
-            </tr>
-            '''
-    # print(html_code)
-    return html_code
 
 #-----------------------------------------------------------------------
 
@@ -259,29 +193,9 @@ def reg_details():
     details = results[1]
     print("details:", details)
 
-    html_code = f'''
-        <!DOCTYPE html>
-        <html>
-            <head>
-                <title>localhost:5001</title>
-            </head>
-            <body>
-                {convert_to_html_details(details)}
-                <hr>
-                <p>Click here to do <a href="/{prev_query_str}">another class search</a></p>
-                {commons.get_footer()}
-            </body>
-        </html>
-        '''
-    # print(html_code)
-    # content_header = ('content-type', 'text/html; charset=utf-8')
-    #cookie = http.cookies.SimpleCookie()
-    #cookie[’prev_author’] = prev_author
-    #cookie_header = (’Set-Cookie’, cookie[’prev_author’].OutputString())
-    #headers = [content_header, cookie_header]
-    # headers = [content_header]
-    # start_response('200 OK', headers)
-    # return [html_code.encode('utf-8')]
+    html_code = flask.render_template('regDetails.html',
+        getDetails=convert_to_html_details(details))
+
     response = flask.make_response(html_code)
     return response
 
