@@ -8,7 +8,7 @@
             {% if not details[0]: %}
                 {% if classid == '': %}
                     <p>missing classid</p>
-                {% elif not isInt: %}
+                {% elif not is_int: %}
                     <p>non-integer classid</p>
                 {% elif details[1] != '': %}
                     <p>{{details[1]}}</p>

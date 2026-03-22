@@ -14,6 +14,7 @@ app = flask.Flask(__name__, template_folder='.')
 
 #-----------------------------------------------------------------------
 
+# Main page. Default list all courses.
 @app.route('/', methods=['GET'])
 def index():
 
@@ -35,31 +36,34 @@ def index():
         prev_area = ''
     if prev_title is None:
         prev_title = ''
-    if dept is None and coursenum is None and area is None and title is None:
+    
+    if (dept is None and coursenum is None
+        and area is None and title is None):
         dept = prev_dept
         coursenum = prev_num
         area = prev_area
         title = prev_title
+    
     else:
         if dept is None:
             dept = ''
         dept = dept.strip()
-        
+
         if coursenum is None:
             coursenum = ''
         coursenum = coursenum.strip()
-        
+
         if area is None:
             area = ''
         area = area.strip()
-        
+
         if title is None:
             title = ''
-        # title = title.strip()
-    
-    course = {'dept': dept, 'coursenum': coursenum, 'area':area, 'title':title}
-    
-    courses = database.search_courses(course) # Exception handling omitted
+
+    course = {'dept': dept, 'coursenum': coursenum,
+              'area':area, 'title':title}
+
+    courses = database.search_courses(course)
 
     html_code = flask.render_template('index.html',
                                       courses = courses)
@@ -75,6 +79,7 @@ def index():
 
 #-----------------------------------------------------------------------
 
+# Page for class details and course details.
 @app.route('/regdetails', methods=['GET'])
 def reg_details():
     classid = flask.request.args.get('classid')
@@ -83,15 +88,13 @@ def reg_details():
         classid = ''
     classid = classid.strip()
 
-    details = database.search_details(classid) # Exception handling omitted
+    details = database.search_details(classid)
 
-    isInt = True
-    if (type(classid) != int):
-        isInt = False
+    is_int = isinstance(classid, int)
 
-    html_code = flask.render_template('regDetails.html', 
+    html_code = flask.render_template('regDetails.html',
                                       classid = classid,
-                                      isInt = isInt,
+                                      is_int = is_int,
                                       details = details)
 
     response = flask.make_response(html_code)
@@ -99,6 +102,7 @@ def reg_details():
 
 #-----------------------------------------------------------------------
 
+# Page for faulty URL
 @app.route('/notFound', methods=['GET'])
 def not_found():
 

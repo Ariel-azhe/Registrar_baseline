@@ -7,7 +7,7 @@ describing your teammate's contribution. Please be thorough; we're
 looking for two substantial paragraphs, not a sentence or two. (If
 you worked alone, then you should skip this section.)
 
-As per our talk with Professor Dondero, Grace was the driver for a majority of the assignment and Ariel was mostly the navigator. After completing the website without cookies, we split in 2 trying to figure out how to implement cookies. Grace worked on implementing the jinja2 template (since we had been following the wsgi template) and Ariel worked on how to add cookies.
+As per our talk with Professor Dondero, Grace was the driver for a majority of the assignment and Ariel was mostly the navigator. When creating the website (prior to implementing cookies), Grace used the provided templates from lecture 9 and dealt with html formatting (At first, we incorrectly followed the wsgi template and implemented our website from there). After completing the website without cookies, we split in 2 trying to figure out how to implement cookies. Grace worked on implementing the jinja2 template (since we had been following the wsgi template) and Ariel worked on how to add cookies. Grace made the .html files and changed the python script for our convert_to_html() functions to jinja2. Added try/except to database.py to deal with faulty input. Created test files. Once again we divided into 2 to work on pylint. Grace pylinted penny.py.
 
 Ariel
 
@@ -22,7 +22,7 @@ to indicate that you received no help from other people other than
 the course instructors.
 
 i forgot: Jocelyn
-cookies: Raluca
+Implementing cookies: Raluca
 
 A description of the written sources of information other than the
 lecture material that you used while doing the assignment. Your
