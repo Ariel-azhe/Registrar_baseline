@@ -12,15 +12,15 @@ import penny
 def main():
 
     try:
+        # description to be displayed on -h page
         port_help = ''.join(('the port at which the ',
                                 'should listen'))
         reg_desc = ''.join(('The registrar application'))
         parser = argparse.ArgumentParser(description = reg_desc)
-        # Parse the command line argument as the classid
+        # Parse the command line argument as the port
         parser.add_argument('port', type = int,
                         help = port_help)
         ns = parser.parse_args()
-    
     # Write the Exception message contained within
     # the thrown Exception object to stderr
     except Exception:

@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>localhost:5001</title>
+        <title>Registrar's Office</title>
     </head>
     <body>
         {% include 'header.html' %}
+        <!--display error message on webpage if there is one-->
         {% if not courses[0]: %}
             <p>{{courses[1]}}</p>
         {% else %}
             <h2>Class Search</h2>
             <hr>
+            <!--the form for search criteria-->
             <form action ="/" method="get">
                 Dept:
                 <input type="text" name="department" id="deptInput" autofocus>
@@ -26,6 +28,7 @@
                 <input type="submit" id="submitButton" value="Go">
             </form>
             <hr>
+            <!--table of all classes that match the search criteria-->
             <table id="overviewsTable" border = "1" cellpadding = "1" cellspacing = "2">
                 <tr>
                     <th><strong>ClassId</strong></th>

@@ -86,13 +86,15 @@ def main():
         run_test(server_url, browser_process, '9977')
         run_test(server_url, browser_process, '9012')
         run_test(server_url, browser_process, '10188')
-
-
-        # Only test for existing class (otherwise works on website but bugs when testing)
         run_test(server_url, browser_process, '7840')
         run_test(server_url, browser_process, '8979')
         run_test(server_url, browser_process, '9875')
         run_test(server_url, browser_process, '7859')
+
+
+        # Only test for existing class
+        # (otherwise works on website but due to the
+        # formation of the test file when testing)
 
 if __name__ == '__main__':
     main()

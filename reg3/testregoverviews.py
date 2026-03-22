@@ -104,23 +104,30 @@ def main():
         run_test(server_url, browser_process , {'title': 'science'})
         run_test(server_url, browser_process , {'title': 'C_S'})
         run_test(server_url, browser_process , {'title': 'c%S'})
-        run_test(server_url, browser_process , {'dept': 'COS', 'coursenum': '3'})
-        run_test(server_url, browser_process , {'title': 'Independent Study'})
-        run_test(server_url, browser_process , {'title': 'Independent Study '})
-        run_test(server_url, browser_process , {'title': 'Independent Study  '})
-        run_test(server_url, browser_process , {'title': ' Independent Study'})
-        run_test(server_url, browser_process , {'title': '  Independent Study'})
-        run_test(server_url, browser_process , {'title': '-c'})
+        run_test(server_url, browser_process ,
+                 {'dept': 'COS', 'coursenum': '3'})
+        run_test(server_url, browser_process ,
+                 {'title': 'Independent Study'})
+        run_test(server_url, browser_process ,
+                 {'title': 'Independent Study '})
+        run_test(server_url, browser_process ,
+                 {'title': 'Independent Study  '})
+        run_test(server_url, browser_process ,
+                 {'title': ' Independent Study'})
+        run_test(server_url, browser_process ,
+                 {'title': '  Independent Study'})
+        run_test(server_url, browser_process ,
+                 {'title': '-c'})
 
         # Test for classes with long titles
-        run_test(server_url, browser_process , {'title': 'Topics in Policy Analysis (Half-Term): Management of Public Organizations'})
-
+        long_title = ''.join(('Topics in Policy Analysis (Half-Term)',
+                             ': Management of Public Organizations'))
+        run_test(server_url, browser_process,{'title': long_title})
         # Error Handling argparse Examples:
         run_test(server_url, browser_process , '-h')
         run_test(server_url, browser_process , 'dksjl jfsdlk sfjkdl')
         run_test(server_url, browser_process , '5001 qr -d')
         run_test(server_url, browser_process , {'area': 'dept'})
-        run_test(server_url, browser_process , '-x')     
-
+        run_test(server_url, browser_process , '-x')
 if __name__ == '__main__':
     main()

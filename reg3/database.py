@@ -8,7 +8,6 @@
 import sys
 import sqlite3
 import contextlib
-import json
 
 #-----------------------------------------------------------------------
 
@@ -46,8 +45,9 @@ def escape_x(x):
 
 # Function to access the database
 # And search for class details to be
-# Returned to and displayed by 
-# The regdetails.py client
+# Returned to and displayed by the webpage.
+# Returns a descriptive error message to the
+# Webpage and prints the complete error to stderr
 def search_details(args):
     try:
         success = True
@@ -89,7 +89,6 @@ def search_details(args):
                                 AND classes.courseid = ?
                                 ORDER BY dept, coursenum
                                 ''', [table['courseid']])
-                
                     tab = cursor.fetchall()
                     for row in tab:
                         cross = {'dept':row[0], 'coursenum':row[1]}
@@ -116,8 +115,8 @@ def search_details(args):
                         table['profnames'].append(row[0])
     except Exception as ex:
         success = False
-        table = 'A server error occurred. Please contact the system administrator.'
-                    
+        table = ''.join(('A server error occurred. Please',
+                                ' contact the system administrator.'))
         print(f'{sys.argv[0]}: {ex}', file=sys.stderr)
     return [success, table]
 
@@ -125,10 +124,11 @@ def search_details(args):
 
 # Function to access the database
 # And search for courses to be
-# Returned to and displayed by 
-# The regoverviews.py client
+# Returned to and displayed by the webpage.
+# Returns a descriptive error message to the
+# Webpage and prints the complete error to stderr
 def search_courses(args):
-    try: 
+    try:
         success = True
         with sqlite3.connect(_DATABASE_URL + '?mode=ro',
                 isolation_level=None, uri=True) as connection:
@@ -162,7 +162,6 @@ def search_courses(args):
                         prepare.append(f'%{escape_x(dict['title'])}%')
 
                 stmt_str += 'ORDER BY dept, coursenum, classid'
-                print(stmt_str)
                 cursor.execute(stmt_str, prepare)
                 tab = cursor.fetchall()
                 table = []
@@ -175,9 +174,9 @@ def search_courses(args):
                     table.append(dict)
     except Exception as ex:
         success = False
-        table = 'A server error occurred. Please contact the system administrator.'
+        table = ''.join(('A server error occurred. Please',
+                                ' contact the system administrator.'))
         print(f'{sys.argv[0]}: {ex}', file=sys.stderr)
-    print(table)
     return [success, table]
 
 #-----------------------------------------------------------------------
