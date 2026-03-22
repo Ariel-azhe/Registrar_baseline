@@ -5,82 +5,83 @@
     </head>
     <body>
         {% include 'header.html' %}
-        
-        {% if exists == False: %}
-            {% if not isInt: %}
-                <p>non-integer classid</p>
-            {% elif classid == '': %}
-                <p>missing classid</p>
+            {% if not details[0]: %}
+                {% if classid == '': %}
+                    <p>missing classid</p>
+                {% elif not isInt: %}
+                    <p>non-integer classid</p>
+                {% elif details[1] != '': %}
+                    <p>{{details[1]}}</p>
+                {% else %}
+                    <p>no class with classid {{classid}} exists</p>
+                {% endif %}
             {% else %}
-                <p>no class with classid {{classid}} exists</p>
-            {% endif %}
-        {% else %}
-        <hr>
-        <h2> Class Details </h2>
-        <table id="classDetailsTable" border = "1" cellpadding = "1" cellspacing = "2">
-            <tr>
-                <td><strong>Class Id</strong></td>
-                <td>{{details['classid']}}</td>
-            </tr>
-            <tr>
-                <td><strong>Days</strong></td>
-                <td>{{details['days']}}</td>
-            </tr>
-            <tr>
-                <td><strong>Start time</strong></td>
-                <td>{{details['starttime']}}</td>
-            </tr>
-            <tr>
-                <td><strong>End time</strong></td>
-                <td>{{details['endtime']}}</td>
-            </tr>
-            <tr>
-                <td><strong>Building</strong></td>
-                <td>{{details['bldg']}}</td>
-            </tr>
-            <tr>
-                <td><strong>Room</strong></td>
-                <td>{{details['roomnum']}}</td>
-            </tr>
-        </table>
-                <h2> Course Details </h2>
-                <table id="courseDetailsTable" border = "1" cellpadding = "1" cellspacing = "2">
-                    <tr>
-                        <td><strong>Course Id</strong></td>
-                        <td>{{details['courseid']}}</td>
-                    </tr>
-        {% for deptnum in details['deptcoursenums']: %}
-            <tr>
-                <td><strong>Dept and Number</strong></td>
-                <td>{{deptnum['dept']}} {{deptnum['coursenum']}}</td>
-            </tr>
-        {% endfor %}
-            <tr>
-                <td><strong>Area</strong></td>
-                <td>{{details['area']}}</td>
-            </tr>
-            <tr>
-                <td><strong>Title</strong></td>
-                <td>{{details['title']}}</td>
-            </tr>
-            <tr>
-                <td><strong>Description</strong></td>
-                <td>{{details['descrip']}}</td>
-            </tr>
-            <tr>
-                <td><strong>Prerequisites</strong></td>
-                <td>{{details['prereqs']}}</td>
-            </tr>
-        {% for prof in details['profnames']: %}
-            <tr>
-                <td><strong>Professor</strong></td>
-                <td>{{prof}} </td>
-            </tr>
-        {% endfor %}
+            <hr>
+            <h2> Class Details </h2>
+            <table id="classDetailsTable" border = "1" cellpadding = "1" cellspacing = "2">
+                <tr>
+                    <td><strong>Class Id</strong></td>
+                    <td>{{details[1]['classid']}}</td>
+                </tr>
+                <tr>
+                    <td><strong>Days</strong></td>
+                    <td>{{details[1]['days']}}</td>
+                </tr>
+                <tr>
+                    <td><strong>Start time</strong></td>
+                    <td>{{details[1]['starttime']}}</td>
+                </tr>
+                <tr>
+                    <td><strong>End time</strong></td>
+                    <td>{{details[1]['endtime']}}</td>
+                </tr>
+                <tr>
+                    <td><strong>Building</strong></td>
+                    <td>{{details[1]['bldg']}}</td>
+                </tr>
+                <tr>
+                    <td><strong>Room</strong></td>
+                    <td>{{details[1]['roomnum']}}</td>
+                </tr>
             </table>
-        <hr>
-        <p>Click here to do <a href="/">another class search</a></p>    
-        {% endif %}
+                    <h2> Course Details </h2>
+                    <table id="courseDetailsTable" border = "1" cellpadding = "1" cellspacing = "2">
+                        <tr>
+                            <td><strong>Course Id</strong></td>
+                            <td>{{details[1]['courseid']}}</td>
+                        </tr>
+            {% for deptnum in details[1]['deptcoursenums']: %}
+                <tr>
+                    <td><strong>Dept and Number</strong></td>
+                    <td>{{deptnum['dept']}} {{deptnum['coursenum']}}</td>
+                </tr>
+            {% endfor %}
+                <tr>
+                    <td><strong>Area</strong></td>
+                    <td>{{details[1]['area']}}</td>
+                </tr>
+                <tr>
+                    <td><strong>Title</strong></td>
+                    <td>{{details[1]['title']}}</td>
+                </tr>
+                <tr>
+                    <td><strong>Description</strong></td>
+                    <td>{{details[1]['descrip']}}</td>
+                </tr>
+                <tr>
+                    <td><strong>Prerequisites</strong></td>
+                    <td>{{details[1]['prereqs']}}</td>
+                </tr>
+            {% for prof in details[1]['profnames']: %}
+                <tr>
+                    <td><strong>Professor</strong></td>
+                    <td>{{prof}} </td>
+                </tr>
+            {% endfor %}
+                </table>
+            <hr>
+            <p>Click here to do <a href="/">another class search</a></p>    
+            {% endif %}
         {% include 'footer.html' %}
     </body>
 </html>

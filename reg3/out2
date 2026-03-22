@@ -1,42 +1,191 @@
 ------------------------------------------------------------------------
-dept: |COS|
-ClassId	Dept	Num	Area	Title
-8291	COS	116	ST	The Computational Universe
-8292	COS	126	QR	General Computer Science
-8293	COS	126	QR	General Computer Science
-8308	COS	217	QR	Introduction to C_Science Programming Systems
-8313	COS	226	QR	Algorithms and Data Structures
-9032	COS	233	ST	An Integrated, Quantitative Introduction to the Natural Sciences II
-9033	COS	233	ST	An Integrated, Quantitative Introduction to the Natural Sciences II
-9037	COS	234		An Integrated, Quantitative Introduction to the Natural Sciences II
-9038	COS	236		An Integrated, Quantitative Introduction to the Natural Sciences IV
-8597	COS	306	ST	Introduction to Logic Design
-9363	COS	314	QR	Computer and Electronic Music through Programming, Performance, and Composition
-8320	COS	320		Compiling Techniques
-8321	COS	333		Advanced C%Science Programming Techniques
-9240	COS	342	QR	Introduction to Graph Theory
-8322	COS	398		Junior Independent Work (B.S.E. candidates only)
-10009	COS	401		Introduction to Machine Translation
-8323	COS	423		Theory of Algorithms
-8324	COS	424		Interacting with Data
-8325	COS	426		Computer Graphics
-8326	COS	433		Cryptography
-8327	COS	435		Information Retrieval, Discovery, and Delivery
-8328	COS	444	SA	Internet Auctions: Theory and Practice
-8329	COS	451		Computational Geometry
-8330	COS	461		Computer Networks
-8331	COS	498		Senior Independent Work (B.S.E. candidates only)
-8332	COS	522		Computational Complexity
-10244	COS	586		Topics in STEP: Information Technology and Public Policy
-8333	COS	598A		Advanced Topics in Computer Science: Economic and Systems Design for Electronic Marketplaces
-8334	COS	598B		Advanced Topics in Computer Science: Algorithms and Complexity
-8335	COS	598C		Advanced Topics in Computer Science: Systems for Large Data
-8336	COS	598D		Advanced Topics in Computer Science: Formal Methods in Networking
+Class Id	8321
+Days	TTh
+Start time	11:00 AM
+End time	12:20 PM
+Building	FRIEN
+Room	006
+Course Id	3672
+Dept and Number	COS 333
+Area	
+Title	Advanced C%Science Programming Techniques
+Description	This is a course about the practice of programming. Programming is more than just writing code. Programmers must also assess tradeoffs, choose among design alternatives, debug and test, improve performance, and maintain software written by themselves & others. At the same time, they must be concerned with compatibility, robustness, and reliability, while meeting specifications. Students will have the opportunity to develop these skills by working on their own code and in group projects.
+Prerequisites	COS 217 and COS 226.
+Professor	Brian W. Kernighan
 ------------------------------------------------------------------------
-dept: |COS|
-coursenum: |2|
-area: |qr|
-title: |intro|
-ClassId	Dept	Num	Area	Title
-8308	COS	217	QR	Introduction to C_Science Programming Systems
-9240	COS	342	QR	Introduction to Graph Theory
+Class Id	8321
+Days	TTh
+Start time	11:00 AM
+End time	12:20 PM
+Building	FRIEN
+Room	006
+Course Id	3672
+Dept and Number	COS 333
+Area	
+Title	Advanced C%Science Programming Techniques
+Description	This is a course about the practice of programming. Programming is more than just writing code. Programmers must also assess tradeoffs, choose among design alternatives, debug and test, improve performance, and maintain software written by themselves & others. At the same time, they must be concerned with compatibility, robustness, and reliability, while meeting specifications. Students will have the opportunity to develop these skills by working on their own code and in group projects.
+Prerequisites	COS 217 and COS 226.
+Professor	Brian W. Kernighan
+------------------------------------------------------------------------
+Class Id	9032
+Days	W
+Start time	07:30 PM
+End time	08:50 PM
+Building	ICAHN
+Room	ATR
+Course Id	4026
+Dept and Number	CHM 233
+Dept and Number	COS 233
+Dept and Number	ISC 233
+Dept and Number	MOL 233
+Dept and Number	PHY 233
+Area	ST
+Title	An Integrated, Quantitative Introduction to the Natural Sciences II
+Description	An integrated, mathematically and computationally sophisticated introduction to physics and chemistry, drawing on examples from biological systems. This year-long 4 course sequence is a multi-disciplinary course taught across 4 departments with the following faculty involved in teaching the course: W. Bialek , C. Callan, J. Shaevitz (PHY); D. Botstein (MOL); M. Singh (COS); E. Carter (MAE).
+Prerequisites	Familiarity with calculus at the level of MAT 103/104 or Advanced Placement Calculus BC, solid high school physics and chemistry courses. Students must have completed ISC/CHM/COS/MOL/PHY 231 and 232 in the Fall.
+Professor	Curtis G. Callan
+Professor	David Botstein
+Professor	Mona Singh
+------------------------------------------------------------------------
+Class Id	8293
+Days	TTh
+Start time	11:00 AM
+End time	11:50 AM
+Building	FRIEN
+Room	101
+Course Id	3668
+Dept and Number	COS 126
+Dept and Number	EGR 126
+Area	QR
+Title	General Computer Science
+Description	An introduction to computer science in the context of scientific, engineering, and commercial applications. The goal of the course is to teach basic principles and practical issues, while at the same time preparing students to use computers effectively for applications in computer science, physics, biology, chemistry, engineering, and other disciplines. Topics include: hardware and software systems; programming in Java; algorithms and data structures; fundamental principles of computation; and scientific computing, including simulation, optimization, and data analysis. Two lectures, two precepts.
+Prerequisites	
+Professor	Larry L. Peterson
+------------------------------------------------------------------------
+Class Id	9977
+Days	MW
+Start time	01:30 PM
+End time	02:50 PM
+Building	FRIST
+Room	307
+Course Id	4419
+Dept and Number	SPA 321
+Area	LA
+Title	Topics in the Intellectual History of Modern and Contemporary Spain: Culture and Memory of the Spanish Civil War
+Description	An examination of the narrative, poetry, film, songs, photography and graphic art generated by Spaniards and foreigners about the Spanish Civil War (1936-1939) in the seventy years since the war was fought. This cultural production will be examined in the context of the political and ideological reasons that explain the international attraction the war generated. Among the works examined: poems by Neruda; Picasso's Guernica (it was the first war in which aviation played a significant role); documentaries (The Spanish Earth, Mourir a Madrid); and photographs by Robert Capa (the Spanish Civil War consecrated the nascent art of photojournalism).
+Prerequisites	At least one SPA 200-level course (two 200-level SPA courses advisable) or instructor's permission.
+Professor	Angel G. Loureiro
+------------------------------------------------------------------------
+Class Id	9012
+Days	MW
+Start time	11:00 AM
+End time	11:50 AM
+Building	SCCAH
+Room	103
+Course Id	4017
+Dept and Number	HLS 102
+Dept and Number	MOG 102
+Area	
+Title	Elementary Modern Greek II
+Description	To provide the basis for acquiring a command of written and spoken Modern Greek.
+Prerequisites	HLS 101 or equivalent, or permission of instructor.
+------------------------------------------------------------------------
+Class Id	10188
+Days	T
+Start time	07:30 PM
+End time	10:20 PM
+Building	ROBEH
+Room	014
+Course Id	4554
+Dept and Number	WWS 402
+Area	
+Title	Policy Seminars
+Description	In policy seminars students work in groups first formulating the general problem, then engaging in individual research on subtopics, and finally presenting their inferences for discussion and debate and producing a collective policy report.
+Prerequisites	Enrollment is limited to WWS concentrators and certificate students. The course is required for concentrators, for whom it is considered Junior Independent Work. Junior concentrators are automatically signed up for the policy seminar as Junior Independent Work, not as WWS 402. WWS juniors who are certificate students must enroll. Seniors serving as commissioners and graduate students serving as consultants may enroll with permission of the instructor.
+------------------------------------------------------------------------
+Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for get_by_text("9034").first
+
+------------------------------------------------------------------------
+Class Id	8324
+Days	TTh
+Start time	11:00 AM
+End time	12:20 PM
+Building	COMPU
+Room	105
+Course Id	3675
+Dept and Number	COS 424
+Area	
+Title	Interacting with Data
+Description	Computers have made it possible, even easy, to collect vast amounts of data from a wide variety of sources. It is not always clear, however, how to use that data, and how to extract useful information from it. This problem is faced in a tremendous range of business and scientific applications. This course will focus on some of the most useful approaches to this broad problem, exploring both theoretical foundations and practical applications. Students will gain experience analyzing several kinds of data, including text, images and biological data. Topics will include classification, clustering, prediction, and dimensionality reduction.
+Prerequisites	MAT 202 and COS 126 or equivalent or permission of instructor.
+------------------------------------------------------------------------
+Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for get_by_text("7000").first
+
+------------------------------------------------------------------------
+Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for get_by_text("7001").first
+
+------------------------------------------------------------------------
+Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for get_by_text("7002").first
+
+------------------------------------------------------------------------
+Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for get_by_text("7003").first
+
+------------------------------------------------------------------------
+Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for get_by_text("7004").first
+
+------------------------------------------------------------------------
+Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for get_by_text("7005").first
+
+------------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/grace/Registrar_baseline/reg3/testregdetails.py", line 103, in <module>
+  File "/Users/grace/Registrar_baseline/reg3/testregdetails.py", line 99, in main
+    if __name__ == '__main__':
+                ^^^^^^^^^^^^^^
+  File "/Users/grace/Registrar_baseline/reg3/testregdetails.py", line 53, in run_test
+    link.click()
+    ~~~~~~~~~~^^
+  File "/Users/grace/Registrar_baseline/.venv/lib/python3.13/site-packages/playwright/sync_api/_generated.py", line 15631, in click
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.click(
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        )
+        ^
+    )
+    ^
+  File "/Users/grace/Registrar_baseline/.venv/lib/python3.13/site-packages/playwright/_impl/_sync_base.py", line 113, in _sync
+    self._dispatcher_fiber.switch()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/grace/Registrar_baseline/.venv/lib/python3.13/site-packages/playwright/sync_api/_context_manager.py", line 56, in greenlet_main
+    self._loop.run_until_complete(self._connection.run_as_sync())
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 707, in run_until_complete
+    self.run_forever()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 678, in run_forever
+    self._run_once()
+    ~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 1995, in _run_once
+    event_list = self._selector.select(timeout)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/selectors.py", line 548, in select
+    kev_list = self._selector.control(None, max_ev, timeout)
+KeyboardInterrupt
+Future exception was never retrieved
+future: <Future finished exception=TargetClosedError('Target page, context or browser has been closed')>
+playwright._impl._errors.TargetClosedError: Target page, context or browser has been closed

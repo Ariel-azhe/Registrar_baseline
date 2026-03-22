@@ -11,10 +11,6 @@ import penny
 
 def main():
 
-    if len(sys.argv) != 2:
-        print(f'usage: {sys.argv[0]} port', file=sys.stderr)
-        sys.exit(1)
-
     try:
         port_help = ''.join(('the port at which the ',
                                 'should listen'))

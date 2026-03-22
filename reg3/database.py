@@ -49,71 +49,76 @@ def escape_x(x):
 # Returned to and displayed by 
 # The regdetails.py client
 def search_details(args):
-    success = True
-    with sqlite3.connect(_DATABASE_URL + '?mode=ro',
-            isolation_level=None, uri=True) as connection:
-        with contextlib.closing(connection.cursor()) as cursor:
-            classid = args
-            # Select the columns that should be
-            # displayed with corresponding courseids
-            table = {'classid':'', 'days':'',
-                    'starttime':'',
-                    'endtime':'',
-                    'bldg':'', 'roomnum':'',
-                    'courseid':'',
-                    'deptcoursenums':[], 'area':'',
-                    'title':'', 'descrip':'',
-                    'prereqs':'','profnames': []}
-            cursor.execute('''SELECT * FROM classes
-                            WHERE classid = ?
-                            ''', [classid])
-            tab = cursor.fetchall()
-            if len(tab) == 0:
-                success = False
-                table = ''.join((f'{sys.argv[0]}: ',
-                                'no class with classid ',
-                                f'{classid} exists'))
-            else:
-                for row in tab:
-                    table['classid'] = row[0]
-                    table['courseid'] = row[1]
-                    table['days'] = row[2]
-                    table['starttime'] = row[3]
-                    table['endtime'] = row[4]
-                    table['bldg'] = row[5]
-                    table['roomnum'] = row[6]
-                cursor.execute(''' SELECT DISTINCT dept, coursenum
-                            FROM classes, crosslistings
-                            WHERE
-                            classes.courseid = crosslistings.courseid
-                            AND classes.courseid = ?
-                            ORDER BY dept, coursenum
-                            ''', [table['courseid']])
-            
+    try:
+        success = True
+        with sqlite3.connect(_DATABASE_URL + '?mode=ro',
+                isolation_level=None, uri=True) as connection:
+            with contextlib.closing(connection.cursor()) as cursor:
+                classid = args
+                # Select the columns that should be
+                # displayed with corresponding courseids
+                table = {'classid':'', 'days':'',
+                        'starttime':'',
+                        'endtime':'',
+                        'bldg':'', 'roomnum':'',
+                        'courseid':'',
+                        'deptcoursenums':[], 'area':'',
+                        'title':'', 'descrip':'',
+                        'prereqs':'','profnames': []}
+                cursor.execute('''SELECT * FROM classes
+                                WHERE classid = ?
+                                ''', [classid])
                 tab = cursor.fetchall()
-                for row in tab:
-                    cross = {'dept':row[0], 'coursenum':row[1]}
-                    table['deptcoursenums'].append(cross)
-                cursor.execute('''
-                                SELECT area, title, descrip, prereqs
-                                FROM courses
-                                WHERE courseid = ?
+                if len(tab) == 0:
+                    success = False
+                    table = ''.join(('no class with classid ',
+                                    f'{classid} exists'))
+                else:
+                    for row in tab:
+                        table['classid'] = row[0]
+                        table['courseid'] = row[1]
+                        table['days'] = row[2]
+                        table['starttime'] = row[3]
+                        table['endtime'] = row[4]
+                        table['bldg'] = row[5]
+                        table['roomnum'] = row[6]
+                    cursor.execute(''' SELECT DISTINCT dept, coursenum
+                                FROM classes, crosslistings
+                                WHERE
+                                classes.courseid = crosslistings.courseid
+                                AND classes.courseid = ?
+                                ORDER BY dept, coursenum
                                 ''', [table['courseid']])
-                tab = cursor.fetchall()
-                for row in tab:
-                    table['area'] = row[0]
-                    table['title'] = row[1]
-                    table['descrip'] = row[2]
-                    table['prereqs'] = row[3]
-                cursor.execute(''' SELECT profname
-                            FROM profs, coursesprofs
-                            WHERE coursesprofs.profid = profs.profid
-                            AND coursesprofs.courseid = ?
-                            ORDER BY profname
-                            ''', [table['courseid']])
-                tab = cursor.fetchall()
-                for row in tab:
-                    table['profnames'].append(row[0])
+                
+                    tab = cursor.fetchall()
+                    for row in tab:
+                        cross = {'dept':row[0], 'coursenum':row[1]}
+                        table['deptcoursenums'].append(cross)
+                    cursor.execute('''
+                                    SELECT area, title, descrip, prereqs
+                                    FROM courses
+                                    WHERE courseid = ?
+                                    ''', [table['courseid']])
+                    tab = cursor.fetchall()
+                    for row in tab:
+                        table['area'] = row[0]
+                        table['title'] = row[1]
+                        table['descrip'] = row[2]
+                        table['prereqs'] = row[3]
+                    cursor.execute(''' SELECT profname
+                                FROM profs, coursesprofs
+                                WHERE coursesprofs.profid = profs.profid
+                                AND coursesprofs.courseid = ?
+                                ORDER BY profname
+                                ''', [table['courseid']])
+                    tab = cursor.fetchall()
+                    for row in tab:
+                        table['profnames'].append(row[0])
+    except Exception as ex:
+        success = False
+        table = 'A server error occurred. Please contact the system administrator.'
+                    
+        print(f'{sys.argv[0]}: {ex}', file=sys.stderr)
     return [success, table]
 
 #-----------------------------------------------------------------------
@@ -124,12 +129,11 @@ def search_details(args):
 # The regoverviews.py client
 def search_courses(args):
     try: 
+        success = True
         with sqlite3.connect(_DATABASE_URL + '?mode=ro',
                 isolation_level=None, uri=True) as connection:
             with contextlib.closing(connection.cursor()) as cursor:
                 dict = args
-                print("print args below?")
-                print(f"this is args?: {args}")
 
                 # Select the columns that should be
                 # displayed with corresponding courseids
@@ -170,11 +174,10 @@ def search_courses(args):
                             'title': cls[4]}
                     table.append(dict)
     except Exception as ex:
-        to_client = [False,
-                    'A server error occurred. '+
-                    'Please contact the system administrator.']
-        json_str = json.dumps(to_client)
-    # consider other thing
-    return table
+        success = False
+        table = 'A server error occurred. Please contact the system administrator.'
+        print(f'{sys.argv[0]}: {ex}', file=sys.stderr)
+    print(table)
+    return [success, table]
 
 #-----------------------------------------------------------------------
