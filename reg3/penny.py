@@ -20,10 +20,11 @@ app = flask.Flask(__name__, template_folder='.')
 @app.route('/', methods=['GET'])
 def index():
     print("index")
+    print(flask.request.args)
 
-    dept = flask.request.args.get('dept')
+    dept = flask.request.args.get('department')
     print("dept is ", dept)
-    coursenum = flask.request.args.get('coursenum')
+    coursenum = flask.request.args.get('course number')
     print("coursenum is ", coursenum)
     area = flask.request.args.get('area')
     print("area is ", area)
@@ -84,93 +85,6 @@ def index():
     response.set_cookie('prev_title', title)
     return response
 
-#-----------------------------------------------------------------------
-
-#-----------------------------------------------------------------------
-
-def convert_to_html_details(details):
-
-    print("Entered convert")
-    if len(details) == 0:
-        return '(None)'
-    html_code = ''
-        # print("length in courses")
-        # print(courses)
-    html_code += f'''
-        {commons.get_header()}
-        <hr>
-        <h2> Class Details </h2>
-        <table id="classDetailsTable" border = "1" cellpadding = "1" cellspacing = "2">
-                <tr>
-                    <td><strong>Class Id</strong></td>
-                    <td>{details['classid']}</td>
-                </tr>
-                <tr>
-                    <td><strong>Days</strong></td>
-                    <td>{details['days']}</td>
-                </tr>
-                <tr>
-                    <td><strong>Start time</strong></td>
-                    <td>{details['starttime']}</td>
-                </tr>
-                <tr>
-                    <td><strong>End time</strong></td>
-                    <td>{details['endtime']}</td>
-                </tr>
-                <tr>
-                    <td><strong>Building</strong></td>
-                    <td>{details['bldg']}</td>
-                </tr>
-                <tr>
-                    <td><strong>Room</strong></td>
-                    <td>{details['roomnum']}</td>
-                </tr>
-
-            </table>
-            <h2> Course Details </h2>
-            <table id="courseDetailsTable" border = "1" cellpadding = "1" cellspacing = "2">
-                <tr>
-                    <td><strong>Course Id</strong></td>
-                    <td>{details['courseid']}</td>
-                </tr>
-            '''
-    for deptnum in details['deptcoursenums']:
-        html_code += f'''
-            <tr>
-                <td><strong>Dept and Number</strong></td>
-                <td>{deptnum['dept']} {deptnum['coursenum']}</td>
-            </tr>
-            '''
-    html_code += f'''
-        <tr>
-            <td><strong>Area</strong></td>
-            <td>{details['area']}</td>
-        </tr>
-        <tr>
-            <td><strong>Title</strong></td>
-            <td>{details['title']}</td>
-        </tr>
-        <tr>
-            <td><strong>Description</strong></td>
-            <td>{details['descrip']}</td>
-        </tr>
-        <tr>
-            <td><strong>Prerequisites</strong></td>
-            <td>{details['prereqs']}</td>
-        </tr>
-    '''
-    for prof in details['profnames']:
-        html_code += f'''
-            <tr>
-                <td><strong>Professor</strong></td>
-                <td>{prof} </td>
-            </tr>
-            '''
-    html_code += f'''
-        </table>
-    '''
-    # print(html_code)
-    return html_code
 
 #-----------------------------------------------------------------------
 
@@ -178,6 +92,12 @@ def convert_to_html_details(details):
 def reg_details():
     print("reg_details")
     classid = flask.request.args.get('classid')
+    print(flask.request.args)
+    wresults = flask.request.args
+    print(type(wresults))
+    print((wresults.keys))
+    #print(wresults[0])
+    #print(wresults[1])
     if classid is None:
         classid = ''
     classid = classid.strip()
@@ -190,11 +110,13 @@ def reg_details():
     prev_query_str = f'?dept={prev_dept}&coursenum={prev_num}&area={prev_area}&title={prev_title}'
 
     results = database.search_details(classid) # Exception handling omitted
+    print(f"classid: {classid}")
+    print(results)
     details = results[1]
     print("details:", details)
 
     html_code = flask.render_template('regDetails.html',
-        getDetails=convert_to_html_details(details))
+        details = details)
 
     response = flask.make_response(html_code)
     return response
