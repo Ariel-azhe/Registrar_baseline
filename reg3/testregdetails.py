@@ -94,7 +94,5 @@ def main():
         run_test(server_url, browser_process, '9875')
         run_test(server_url, browser_process, '7859')
 
-
-
 if __name__ == '__main__':
     main()
