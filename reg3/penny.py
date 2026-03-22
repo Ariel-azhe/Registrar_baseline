@@ -23,20 +23,17 @@ def index():
     print(flask.request.args)
 
     dept = flask.request.args.get('department')
-    print("dept is ", dept)
     coursenum = flask.request.args.get('course number')
-    print("coursenum is ", coursenum)
     area = flask.request.args.get('area')
-    print("area is ", area)
     title = flask.request.args.get('title')
-    print("title is ", title)
+    print(f"d is: {dept} | n is: {coursenum} | a is: {area} | t is: {title}")
 
     prev_dept = flask.request.cookies.get('prev_dept')
     prev_num = flask.request.cookies.get('prev_num')
     prev_area = flask.request.cookies.get('prev_area')
     prev_title = flask.request.cookies.get('prev_title')
 
-    print(f"d: {prev_dept} | n: {prev_num} | a: {prev_area} | t: {prev_title}")
+    print(f"d prev: {prev_dept} | n prev: {prev_num} | a prev: {prev_area} | t prev: {prev_title}")
 
     if prev_dept is None:
         prev_dept = ''
@@ -70,7 +67,7 @@ def index():
         title = title.strip()
     
 
-    course = {'dept': dept, 'coursenum':coursenum, 'area':area, 'title':title}
+    course = {'dept': dept, 'coursenum': coursenum, 'area':area, 'title':title}
     print(course)
     
     courses = database.search_courses(course) # Exception handling omitted
@@ -79,10 +76,13 @@ def index():
                                       courses =courses)
 
     response = flask.make_response(html_code)
+
+    # Set cookies
     response.set_cookie('prev_dept', dept)
     response.set_cookie('prev_num', coursenum)
     response.set_cookie('prev_area', area)
     response.set_cookie('prev_title', title)
+
     return response
 
 
@@ -93,11 +93,7 @@ def reg_details():
     print("reg_details")
     classid = flask.request.args.get('classid')
     print(flask.request.args)
-    wresults = flask.request.args
-    print(type(wresults))
-    print((wresults.keys))
-    #print(wresults[0])
-    #print(wresults[1])
+
     if classid is None:
         classid = ''
     classid = classid.strip()
@@ -123,24 +119,13 @@ def reg_details():
 
 
 #-----------------------------------------------------------------------
+
+@app.route('/notFound', methods=['GET'])
 def not_found():
 
-    html_code = '''
-        <!DOCTYPE html>
-        <html>
-            <head>
-                <title>404 Not Found</title>
-            </head>
-            <body>
-                <h1>Not Found</h1>
-                <p>The requested URL was not found on the server.
-                If you entered the URL manually please check your
-                spelling and try again.</p>
-            </body>
-        </html>
-        '''
-
+    html_code = flask.render_template('notFound.html')
     response = flask.make_response(html_code)
+
     return response
 
 #-----------------------------------------------------------------------
