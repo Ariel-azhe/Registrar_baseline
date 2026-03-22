@@ -10,7 +10,14 @@ you worked alone, then you should skip this section.)
 As per our talk with Professor Dondero, Grace was the driver for a majority of the assignment and Ariel was mostly the navigator. When creating the website (prior to implementing cookies), Grace used the provided templates from lecture 9 and dealt with html formatting (At first, we incorrectly followed the wsgi template and implemented our website from there). After completing the website without cookies, we split in 2 trying to figure out how to implement cookies. Grace worked on implementing the jinja2 template (since we had been following the wsgi template) and Ariel worked on how to add cookies. Grace made the .html files and changed the python script for our convert_to_html() functions to jinja2. Added try/except to database.py to deal with faulty input. Created test files. Once again we divided into 2 to work on pylint / formatting. Grace pylinted penny.py and reviewed html files.
 
 Ariel
-
+While building the wsgi version of the code, Ariel connected different functionalities
+in files of reg2 and reg3 to build the structure and separate the code into database.py,
+penny.py, and more. Ariel also researched the way to embed links with a variable in it,
+and adapt the communication protocol between the database layer and the frontend. Ariel
+also debugged the cookies relating to how they are not overwritten with an empty query
+to the main page. We also debugged the Independent Study inputs with spaces to realize
+we don't need to strip for title. We adapted test files from reg2 tests and
+worked on pylint formating.
 
 
 
@@ -21,7 +28,7 @@ assignment solution: people from whom you received help." Write "None"
 to indicate that you received no help from other people other than
 the course instructors.
 
-i forgot: Jocelyn
+Questions regarding empty queries to the main page: Jocelyn
 Implementing cookies: Raluca
 
 A description of the written sources of information other than the
@@ -37,6 +44,7 @@ argparse python documentation (https://docs.python.org/3/library/argparse.html#)
 textwrap python documentation (https://docs.python.org/3/library/textwrap.html)
 .join method (https://www.w3schools.com/python/ref_string_join.asp)
 html tables (https://www.w3schools.com/html/tryit.asp?filename=tryhtml_table3)
+
 
 A description of the help that you received from generative AI while
 doing the assignment. Your description must consist of lines of the
