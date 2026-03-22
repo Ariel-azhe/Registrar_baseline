@@ -7,9 +7,7 @@
 
 import html # html_code.escape() is used to thwart XSS attacks
 import flask
-import commons
 import database
-import parseargs
 
 #-----------------------------------------------------------------------
 
@@ -93,6 +91,7 @@ def reg_details():
     print("reg_details")
     classid = flask.request.args.get('classid')
     print(flask.request.args)
+    print(f"classid 1: {classid}")
 
     if classid is None:
         classid = ''
@@ -106,13 +105,22 @@ def reg_details():
     prev_query_str = f'?dept={prev_dept}&coursenum={prev_num}&area={prev_area}&title={prev_title}'
 
     results = database.search_details(classid) # Exception handling omitted
-    print(f"classid: {classid}")
+    print(f"classid 2: {classid}")
     print(results)
+    exists = results[0]
+    print(results[0])
     details = results[1]
     print("details:", details)
 
-    html_code = flask.render_template('regDetails.html',
-        details = details)
+    isInt = True
+    if (type(classid) != int):
+        isInt = False
+
+    html_code = flask.render_template('regDetails.html', 
+                                      exists = exists,
+                                      classid = classid,
+                                      isInt = isInt,
+                                      details = details)
 
     response = flask.make_response(html_code)
     return response

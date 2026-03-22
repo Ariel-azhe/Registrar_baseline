@@ -4,10 +4,17 @@
         <title>localhost:5001</title>
     </head>
     <body>
-        {% if details|length == 0: %}
-            (None)
-        {% endif %}
         {% include 'header.html' %}
+        
+        {% if exists == False: %}
+            {% if not isInt: %}
+                <p>non-integer classid</p>
+            {% elif classid == '': %}
+                <p>missing classid</p>
+            {% else %}
+                <p>no class with classid {{classid}} exists</p>
+            {% endif %}
+        {% else %}
         <hr>
         <h2> Class Details </h2>
         <table id="classDetailsTable" border = "1" cellpadding = "1" cellspacing = "2">
@@ -34,15 +41,14 @@
             <tr>
                 <td><strong>Room</strong></td>
                 <td>{{details['roomnum']}}</td>
-            </tr
-                </table>
+            </tr>
+        </table>
                 <h2> Course Details </h2>
                 <table id="courseDetailsTable" border = "1" cellpadding = "1" cellspacing = "2">
                     <tr>
                         <td><strong>Course Id</strong></td>
                         <td>{{details['courseid']}}</td>
                     </tr>
-                '''
         {% for deptnum in details['deptcoursenums']: %}
             <tr>
                 <td><strong>Dept and Number</strong></td>
@@ -73,7 +79,8 @@
         {% endfor %}
             </table>
         <hr>
-        <p>Click here to do <a href="/">another class search</a></p>
+        <p>Click here to do <a href="/">another class search</a></p>    
+        {% endif %}
         {% include 'footer.html' %}
     </body>
 </html>

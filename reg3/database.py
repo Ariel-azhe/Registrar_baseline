@@ -8,6 +8,7 @@
 import sys
 import sqlite3
 import contextlib
+import json
 
 #-----------------------------------------------------------------------
 
@@ -88,6 +89,7 @@ def search_details(args):
                             AND classes.courseid = ?
                             ORDER BY dept, coursenum
                             ''', [table['courseid']])
+            
                 tab = cursor.fetchall()
                 for row in tab:
                     cross = {'dept':row[0], 'coursenum':row[1]}
@@ -121,51 +123,58 @@ def search_details(args):
 # Returned to and displayed by 
 # The regoverviews.py client
 def search_courses(args):
-    with sqlite3.connect(_DATABASE_URL + '?mode=ro',
-            isolation_level=None, uri=True) as connection:
-        with contextlib.closing(connection.cursor()) as cursor:
-            dict = args
-            print("print args below?")
-            print(f"this is args?: {args}")
+    try: 
+        with sqlite3.connect(_DATABASE_URL + '?mode=ro',
+                isolation_level=None, uri=True) as connection:
+            with contextlib.closing(connection.cursor()) as cursor:
+                dict = args
+                print("print args below?")
+                print(f"this is args?: {args}")
 
-            # Select the columns that should be
-            # displayed with corresponding courseids
-            prepare = []
-            stmt_str = '''
-                SELECT classes.classid, crosslistings.dept, 
-                crosslistings.coursenum, courses.area, courses.title
-                FROM classes, crosslistings, courses
-                WHERE 
-                courses.courseid = classes.courseid and courses.courseid = crosslistings.courseid
-                '''
-            if len(args) == 4:
-                if dict['dept'] != '':
-                    stmt_str += ' AND crosslistings.dept LIKE ? '
-                    prepare.append(f'%{dict['dept'].upper()}%')
-                if dict['coursenum'] != '':
-                    stmt_str += ' AND coursenum LIKE ? '
-                    prepare.append(f'%{dict['coursenum']}%')
-                if dict['area'] != '':
-                    stmt_str += ' AND area LIKE ? '
-                    prepare.append(f'%{dict['area'].upper()}%')
-                if dict['title'] != '':
-                    stmt_str += '''
-                    AND title LIKE ? ESCAPE '/'
+                # Select the columns that should be
+                # displayed with corresponding courseids
+                prepare = []
+                stmt_str = '''
+                    SELECT classes.classid, crosslistings.dept, 
+                    crosslistings.coursenum, courses.area, courses.title
+                    FROM classes, crosslistings, courses
+                    WHERE 
+                    courses.courseid = classes.courseid and courses.courseid = crosslistings.courseid
                     '''
-                    prepare.append(f'%{escape_x(dict['title'])}%')
+                if len(args) == 4:
+                    if dict['dept'] != '':
+                        stmt_str += ' AND crosslistings.dept LIKE ? '
+                        prepare.append(f'%{dict['dept'].upper()}%')
+                    if dict['coursenum'] != '':
+                        stmt_str += ' AND coursenum LIKE ? '
+                        prepare.append(f'%{dict['coursenum']}%')
+                    if dict['area'] != '':
+                        stmt_str += ' AND area LIKE ? '
+                        prepare.append(f'%{dict['area'].upper()}%')
+                    if dict['title'] != '':
+                        stmt_str += '''
+                        AND title LIKE ? ESCAPE '/'
+                        '''
+                        prepare.append(f'%{escape_x(dict['title'])}%')
 
-            stmt_str += 'ORDER BY dept, coursenum, classid'
-            print(stmt_str)
-            cursor.execute(stmt_str, prepare)
-            tab = cursor.fetchall()
-            table = []
-            for cls in tab:
-                dict = {'classid': cls[0],
-                        'dept': cls[1],
-                        'coursenum':cls[2],
-                        'area': cls[3],
-                        'title': cls[4]}
-                table.append(dict)
+                stmt_str += 'ORDER BY dept, coursenum, classid'
+                print(stmt_str)
+                cursor.execute(stmt_str, prepare)
+                tab = cursor.fetchall()
+                table = []
+                for cls in tab:
+                    dict = {'classid': cls[0],
+                            'dept': cls[1],
+                            'coursenum':cls[2],
+                            'area': cls[3],
+                            'title': cls[4]}
+                    table.append(dict)
+    except Exception as ex:
+        to_client = [False,
+                    'A server error occurred. '+
+                    'Please contact the system administrator.']
+        json_str = json.dumps(to_client)
+    # consider other thing
     return table
 
 #-----------------------------------------------------------------------

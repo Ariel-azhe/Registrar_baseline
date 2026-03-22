@@ -6,7 +6,7 @@
 #-----------------------------------------------------------------------
 
 import sys
-import wsgiref.simple_server
+import argparse
 import penny
 
 def main():
@@ -16,14 +16,27 @@ def main():
         sys.exit(1)
 
     try:
-        port = int(sys.argv[1])
+        port_help = ''.join(('the port at which the ',
+                                'should listen'))
+        reg_desc = ''.join(('The registrar application'))
+        parser = argparse.ArgumentParser(description = reg_desc)
+        # Parse the command line argument as the classid
+        parser.add_argument('port', type = int,
+                        help = port_help)
+        ns = parser.parse_args()
+    
+    # Write the Exception message contained within
+    # the thrown Exception object to stderr
     except Exception:
         print(f'{sys.argv[0]}: Port must be an integer.',
               file=sys.stderr)
         sys.exit(1)
 
     try:
-        penny.app.run(host='0.0.0.0', port=port, debug=True)
+        penny.app.run(host='0.0.0.0', port=ns.port, debug=True)
+
+    # Write the Exception message contained within
+    # the thrown Exception object to stderr
     except Exception as ex:
         print(f'{sys.argv[0]}: {ex}', file=sys.stderr)
         sys.exit(1)
