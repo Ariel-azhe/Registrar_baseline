@@ -18,47 +18,25 @@ app = flask.Flask(__name__, template_folder='.')
 @app.route('/', methods=['GET'])
 def index():
 
-    dept = flask.request.args.get('department')
-    coursenum = flask.request.args.get('course number')
+    dept = flask.request.args.get('dept')
+    coursenum = flask.request.args.get('coursenum')
     area = flask.request.args.get('area')
     title = flask.request.args.get('title')
 
-    prev_dept = flask.request.cookies.get('prev_dept')
-    prev_num = flask.request.cookies.get('prev_num')
-    prev_area = flask.request.cookies.get('prev_area')
-    prev_title = flask.request.cookies.get('prev_title')
+    if dept is None:
+        dept = ''
+    dept = dept.strip()
 
-    if prev_dept is None:
-        prev_dept = ''
-    if prev_num is None:
-        prev_num = ''
-    if prev_area is None:
-        prev_area = ''
-    if prev_title is None:
-        prev_title = ''
-    
-    if (dept is None and coursenum is None
-        and area is None and title is None):
-        dept = prev_dept
-        coursenum = prev_num
-        area = prev_area
-        title = prev_title
-    
-    else:
-        if dept is None:
-            dept = ''
-        dept = dept.strip()
+    if coursenum is None:
+        coursenum = ''
+    coursenum = coursenum.strip()
 
-        if coursenum is None:
-            coursenum = ''
-        coursenum = coursenum.strip()
+    if area is None:
+        area = ''
+    area = area.strip()
 
-        if area is None:
-            area = ''
-        area = area.strip()
-
-        if title is None:
-            title = ''
+    if title is None:
+        title = ''
 
     course = {'dept': dept, 'coursenum': coursenum,
               'area':area, 'title':title}
@@ -66,14 +44,14 @@ def index():
     courses = database.search_courses(course)
 
     html_code = flask.render_template('index.html',
-                                      courses = courses)
+                                      courses = courses, courseQuery = course)
     response = flask.make_response(html_code)
 
     # Set cookies
-    response.set_cookie('prev_dept', dept)
-    response.set_cookie('prev_num', coursenum)
-    response.set_cookie('prev_area', area)
-    response.set_cookie('prev_title', title)
+    response.set_cookie('dept', dept)
+    response.set_cookie('coursenum', coursenum)
+    response.set_cookie('area', area)
+    response.set_cookie('title', title)
 
     return response
 
@@ -82,6 +60,10 @@ def index():
 # Page for class details and course details.
 @app.route('/regdetails', methods=['GET'])
 def reg_details():
+    dept = flask.request.cookies.get('dept')
+    coursenum = flask.request.cookies.get('coursenum')
+    area = flask.request.cookies.get('area')
+    title = flask.request.cookies.get('title')
     classid = flask.request.args.get('classid')
 
     if classid is None:
@@ -95,7 +77,11 @@ def reg_details():
     html_code = flask.render_template('regDetails.html',
                                       classid = classid,
                                       is_int = is_int,
-                                      details = details)
+                                      details = details,
+                                      dept = dept,
+                                      coursenum = coursenum,
+                                      area = area,
+                                      title = title)
 
     response = flask.make_response(html_code)
     return response

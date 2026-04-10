@@ -13,19 +13,29 @@
             <hr>
             <!--the form for search criteria-->
             <form action ="/" method="get">
-                Dept:
-                <input type="text" name="department" id="deptInput" autofocus>
-                <br>
-                Number:
-                <input type="text" name = "course number" id="coursenumInput">
-                <br>
-                Area:
-                <input type="text" name = "area" id="areaInput">
-                <br>
-                Title:
-                <input type="text" name = "title" id="titleInput">
-                <br>
-                <input type="submit" id="submitButton" value="Go">
+                <table>
+                <tr>
+                    <td style="text-align: right;">Dept:</td>
+                    <td><input type="text" name="department" id="deptInput" value="{{courseQuery['dept']}}" autofocus></td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">Number:</td>
+                    <td><input type="text" name = "course number" id="coursenumInput" value="{{courseQuery['coursenum']}}"></td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">Area:</td>
+                    <td><input type="text" name = "area" id="areaInput" value="{{courseQuery['area']}}"></td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">Title:</td>
+                    <td><input type="text" name = "title" id="titleInput" value="{{courseQuery['title']}}"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" id="submitButton" value="Go"></td>
+                </tr>
+                </table>
+                
             </form>
             <hr>
             <!--table of all classes that match the search criteria-->
