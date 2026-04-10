@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Registrar's Office</title>
+    </head>
+    <body>
+        <script src = "https://cdn.jsdelivr.net/npm/mustache@4.2.0/mustache.min.js"></script>
+        <script>
+
+            print("started html.");
+            console.log("started.");
+        </script>
+        <!--display error message on webpage if there is one-->
+        {% if not courses[0]: %}
+            <p>{{courses[1]}}</p>
+        {% else %}
+            <h2>Class Search</h2>
+            <hr>
+            <!--the form for search criteria-->
+            <form action ="/" method="get">
+                <table>
+                <tr>
+                    <td style="text-align: right;">Dept:</td>
+                    <td><input type="text" name="department" id="deptInput" autofocus></td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">Number:</td>
+                    <td><input type="text" name = "course number" id="coursenumInput" ></td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">Area:</td>
+                    <td><input type="text" name = "area" id="areaInput" ></td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">Title:</td>
+                    <td><input type="text" name = "title" id="titleInput" ></td>
+                </tr>
+                </table>
+                
+            </form>
+            <hr>
+            <div id="overviewsDiv"></div>
+           <script>
+            'use = strict';
+            print("string");
+            function convertToHtml(courses) {
+                let html = '';
+                html += `
+                <table id="overviewsTable" border = "1" cellpadding = "1" cellspacing = "2">
+                <tr>
+                    <th><strong>ClassId</strong></th>
+                    <th><strong>Dept</strong></th>
+                    <th><strong>Num</strong></th>
+                    <th><strong>Area</strong></th>
+                    <th><strong>Title</strong></th>
+                </tr>
+                `;
+                let template = `
+                {{#courses}}
+                    <tr>
+                        <td><a href="/regdetails?classid={{course['classid']}}" </a>{{classid}}</td> 
+                        <td>{{dept}}</td> 
+                        <td>{{coursenum}}</td>
+                        <td>{{area}}</td> 
+                        <td>{{title}}</td> 
+                    </tr>
+                {{/courses}}
+                    `;
+
+                
+
+                let map = {courses: courses};
+                html += Mustache.render(template, map)  
+                html += '</table>'; 
+                return html;
+
+            }
+
+            
+            function handleResponse() {
+                if (this.status !== 200) {
+                    alert("Error: Failed to fetch data from server");
+                    return;
+                }
+                let courses = JSON.parse(this.response);
+                courses = courses[1]
+                console.log('we have courses: ', courses);
+                
+                let html = convertToHtml(courses);
+                let overviewsDiv = document.getElementById('overviewsDiv');
+                overviewsDiv.innerHTML = html;
+            }
+            function handleError() {
+                alert("Error: Failed to fetch data from server");
+                }
+            
+            let request = null;
+            function getResults() {
+                let deptInput = document.getElementById('deptInput');
+                let dept = deptInput.value;
+                let encodedDept = encodeURIComponent(dept);
+
+                let coursenumInput = document.getElementById('coursenumInput');
+                let coursenum = coursenumInput.value;
+                let encodedCourseNum = encodeURIComponent(coursenum);
+
+                let areaInput = document.getElementById('areaInput');
+                let area = areaInput.value;
+                let encodedArea = encodeURIComponent(area);
+
+                let titleInput = document.getElementById('titleInput');
+                let title = titleInput.value;
+                let encodedTitle = encodeURIComponent(title);
+
+                let url = '/searchresults?dept=' + encodedDept + "&coursenum=" + encodedCourseNum + "&area=" + encodedArea + "&title=" + encodedTitle;
+                if (request !== null) {
+                    request.abort();
+                }
+                console.log("happened");
+                request = new XMLHttpRequest();
+                request.onload = handleResponse;
+                print("loaded");
+                console.log("loaded");
+                request.open("GET", url);
+                request.send();
+            }
+
+            function setup() {
+                console.log("setup happened");
+                let deptInput = document.getElementById('deptInput');
+                deptInput.addEventListener('input', getResults);
+
+                let coursenumInput = document.getElementById('coursenumInput');
+                coursenumInput.addEventListener('input', getResults);
+
+                let areaInput = document.getElementById('areaInput');
+                areaInput.addEventListener('input', getResults);
+
+                let titleInput = document.getElementById('titleInput');
+                titleInput.addEventListener('input', getResults);
+            }
+
+            document.addEventListener('DOMContentLoaded', setup);
+            </script>
+           
+        <br>
+        {% endif %}    
+    
+    </body>
+</html>
