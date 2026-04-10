@@ -35,31 +35,40 @@
       </div>
 
         <div class="container-fluid sticky-top header">
-            <h2 style="text-align: center;">Registrar's Office: Class Search</h2>
+            <div class="row">
+            <h1 style="text-align: center;">Registrar's Office: Class Search</h1>
             <!--the form for search criteria-->
             
+            <div class="container-fluid">
             <form action ="/" method="get">
-                <table>
                     <div class="row" style="display: flex; justify-content: center; align-items: center;">
-                        <div class="col-sm">
-                        <td><input type="text" name="department" id="deptInput" placeholder="Dept" autofocus></td>
+                        <div class="col-sm-3">
+                        <input class="form-control" type="text" name="department" id="deptInput" placeholder="Deptartment" autofocus>
                         </div>
-                        <div class="col-sm">
-                        <td><input type="text" name = "course number" id="coursenumInput" placeholder="Number"></td>
+                        <div class="col-sm-3">
+                        <input class="form-control" type="text" name = "course number" id="coursenumInput" placeholder="Number">
                         </div>
-                        <div class="col-sm">
-                        <td><input type="text" name = "area" id="areaInput" placeholder="Area"></td>
+                        <div class="col-sm-3">
+                        <input class="form-control" type="text" name = "area" id="areaInput" placeholder="Area">
                         </div>
-                        <div class="col-sm">
-                        <td><input type="text" name = "title" id="titleInput" placeholder="Title" ></td>
+                        <div class="col-sm-3">
+                        <input class="form-control" type="text" name = "title" id="titleInput" placeholder="Title" >
                         </div>
                     </div>
-                    
-                </table>
-                
+                                    
             </form>
             </div>
+            </div>
+        </div>
             <div id="overviewsDiv"></div>
+
+            <div class="container-fluid sticky-bottom footer">
+         <center>
+            Created by <a class="footerlink"
+            href="http://www.cs.princeton.edu/~rdondero">
+            Ariel Yuan & Grace Best</a>
+         </center>
+      </div>
            <script>
             'use = strict';
             function convertToHtml(courses) {
