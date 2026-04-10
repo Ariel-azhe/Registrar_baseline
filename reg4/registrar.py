@@ -23,7 +23,6 @@ def index():
 #-----------------------------------------------------------------------
 @app.route('/searchresults', methods=['GET'])
 def search_results():
-    print("hi")
 
     dept = flask.request.args.get('dept')
     coursenum = flask.request.args.get('coursenum')
@@ -46,15 +45,14 @@ def search_results():
         title = ''
 
     course = {'dept': dept, 'coursenum': coursenum,
-              'area':area, 'title':title}
+              'area': area, 'title': title}
 
     courses = database.search_courses(course)
-
-    print("course is: ", course)
     
     # html_code = flask.send_file('index.html')
     json_doc = json.dumps(courses)
     response = flask.make_response(json_doc)
+    
     #response.header['Conent-Type'] = 'application/json'
     return response
 
@@ -63,10 +61,6 @@ def search_results():
 # Page for class details and course details.
 @app.route('/regdetails', methods=['GET'])
 def reg_details():
-    dept = flask.request.cookies.get('dept')
-    coursenum = flask.request.cookies.get('coursenum')
-    area = flask.request.cookies.get('area')
-    title = flask.request.cookies.get('title')
     classid = flask.request.args.get('classid')
 
     if classid is None:
@@ -75,18 +69,15 @@ def reg_details():
 
     details = database.search_details(classid)
 
-    is_int = isinstance(classid, int)
+    # is_int = isinstance(classid, int)
+    print("classid", classid)
+    print("details", details)
 
-    html_code = flask.render_template('regDetails.html',
-                                      classid = classid,
-                                      is_int = is_int,
-                                      details = details,
-                                      dept = dept,
-                                      coursenum = coursenum,
-                                      area = area,
-                                      title = title)
-
-    response = flask.make_response(html_code)
+    # html_code = flask.send_file('index.html')
+    json_doc = json.dumps(details)
+    response = flask.make_response(json_doc)
+    print(response)
+    #response.header['Conent-Type'] = 'application/json'
     return response
 
 #-----------------------------------------------------------------------
