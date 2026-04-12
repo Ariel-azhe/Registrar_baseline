@@ -8,7 +8,7 @@
 .bundle.min.js"> </script>
         <style>
          .header, .footer {background-color:#295078; color:white}
-         .headerlink, .footerlink {color:white}
+         .headerlink {color:white}
       </style>
     </head>
 
@@ -43,7 +43,7 @@
             <form action ="/" method="get">
                     <div class="row" style="display: flex; justify-content: center; align-items: center;">
                         <div class="col-sm-3">
-                        <input class="form-control" type="text" name="department" id="deptInput" placeholder="Deptartment" autofocus>
+                        <input class="form-control" type="text" name="department" id="deptInput" placeholder="Department" autofocus>
                         </div>
                         <div class="col-sm-3">
                         <input class="form-control" type="text" name = "course number" id="coursenumInput" placeholder="Number">
@@ -59,29 +59,31 @@
             </form>
             </div>
             </div>
+            <br>
         </div>
             <div id="overviewsDiv"></div>
 
             <div class="container-fluid sticky-bottom footer">
          <center>
-            Created by <a class="footerlink"
-            href="http://www.cs.princeton.edu/~rdondero">
+            Created by <a 
+            href="https://www.cs.princeton.edu/courses/archive/spring26/cos333/asgts/04registrarajax/index.html">
             Ariel Yuan & Grace Best</a>
          </center>
       </div>
            <script>
-            'use = strict';
+            'use strict';
             function convertToHtml(courses) {
                 let html = '';
                 html += `
-                <table class="table table-striped" id="overviewsTable" border = "2" cellpadding = "1" cellspacing = "2">
+                <div class="container-fluid" >
+                <table class="table table-striped" id="overviewsTable" border = "0" cellpadding = "1" cellspacing = "2">
                 <thead>
                     <tr>
-                        <th><strong>ClassId</strong></th>
-                        <th><strong>Dept</strong></th>
-                        <th><strong>Num</strong></th>
-                        <th><strong>Area</strong></th>
-                        <th><strong>Title</strong></th>
+                        <th>ClassId</th>
+                        <th>Dept</th>
+                        <th>Num</th>
+                        <th>Area</th>
+                        <th>Title</th>
                     </tr>
                 </thead>
                 `;
@@ -115,27 +117,27 @@
                     <table class="table table-striped" id="classDetailsTable" cellpadding = "1" cellspacing = "2">
                         <tbody>
                             <tr>
-                                <th scope="row"><strong>Class Id</strong></th>
+                                <th scope="row">Class Id</th>
                                 <td>{{classid}}</td>
                             </tr>
                             <tr>
-                                <th scope="row"><strong>Days</strong></th>
+                                <th scope="row">Days</th>
                                 <td>{{days}}</td>
                             </tr>
                             <tr>
-                                <th scope="row"><strong>Start time</strong></th>
+                                <th scope="row">Start time</th>
                                 <td>{{starttime}}</td>
                             </tr>
                             <tr>
-                                <th scope="row"><strong>End time</strong></th>
+                                <th scope="row">End time</th>
                                 <td>{{endtime}}</td>
                             </tr>
                             <tr>
-                                <th scope="row"><strong>Building</strong></th>
+                                <th scope="row">Building</th>
                                 <td>{{bldg}}</td>
                             </tr>
                             <tr>
-                                <th scope="row"><strong>Room</strong></th>
+                                <th scope="row">Room</th>
                                 <td>{{roomnum}}</td>
                             </tr>
                         </tbody>
@@ -144,43 +146,44 @@
                     <table class="table table-striped" id="courseDetailsTable" cellpadding = "1" cellspacing = "2">
                         <tbody>
                             <tr>
-                                <th scope="row"><strong>Course Id</strong></th>
+                                <th scope="row">Course Id</strong></th>
                                 <td>{{courseid}}</td>
                             </tr>      
                             <!-- Loop through department numbers -->
                             {{#deptcoursenums}}
                                 <tr>
-                                    <th scope="row"><strong>Dept and Number</strong></th>
+                                    <th scope="row">Dept and Number</th>
                                     <td>{{dept}} {{coursenum}}</td>
                                 </tr>
                             {{/deptcoursenums}}
                             <tr>
-                                <th scope="row"><strong>Area</strong></th>
+                                <th scope="row">Area</th>
                                 <td>{{area}}</td>
                             </tr>
                             <tr>
-                                <th scope="row"><strong>Title</strong></th>
+                                <th scope="row">Title</th>
                                 <td>{{title}}</td>
                             </tr>
                             <tr>
-                                <th scope="row"><strong>Description</strong></th>
+                                <th scope="row">Description</th>
                                 <td>{{descrip}}</td>
                             </tr>
                             <tr>
-                                <th scope="row"><strong>Prerequisites</strong></th>
+                                <th scope="row">Prerequisites</th>
                                 <td>{{prereqs}}</td>
                             </tr>
                             <!-- Loop through all professors -->
-                            <ul>
+                            
                                 {{#profnames}}
                                     <tr>
-                                        <th scope="row"><strong>Professor</strong></th>
+                                        <th scope="row">Professor</th>
                                         <td>{{.}} </td>
                                     </tr>
                                 {{/profnames}}
-                            </ul>
+                            
                         </tbody>
                     </table>
+                    </div>
                 {{/details}}
                     `;
 
@@ -257,6 +260,7 @@
                 console.log("happened");
                 requestOverviews = new XMLHttpRequest();
                 requestOverviews.onload = handleResponse;
+                requestOverviews.onerror = handleError;
                 console.log("loaded");
                 requestOverviews.open("GET", url);
                 requestOverviews.send();
@@ -275,6 +279,7 @@
                 }
                 requestDetails = new XMLHttpRequest();
                 requestDetails.onload = handleModal;
+                requestDetails.onerror = handleError;
                 console.log("loaded getModal");
                 requestDetails.open("GET", url);
                 requestDetails.send();
