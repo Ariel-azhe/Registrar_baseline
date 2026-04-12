@@ -197,7 +197,11 @@
                     return;
                 }
                 let courses = JSON.parse(this.response);
-                courses = courses[1]
+                if (courses[0] == true)
+                {
+                    courses = courses[1]
+                }
+                console.log('we have courses: ', courses);
                 
                 let html = convertToHtml(courses);
                 let overviewsDiv = document.getElementById('overviewsDiv');

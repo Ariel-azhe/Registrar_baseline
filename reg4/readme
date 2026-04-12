@@ -7,7 +7,11 @@ describing your teammate's contribution. Please be thorough; we're
 looking for two substantial paragraphs, not a sentence or two. (If
 you worked alone, then you should skip this section.)
 
-[Enter your reply here.]
+Ariel helped parse the existing code from reg3 into one index.html file
+with <script> included. Referenced course handouts to restructure
+registrar.py from penny.py to pass information via json to the
+webpage. She also added the debounce, used bootstrap to style the
+modal and list of courses, and debugged Mustache. 
 
 A description of the help that you received from people other
 than the course instructors while doing the assignment. Your
@@ -16,7 +20,7 @@ assignment solution: people from whom you received help." Write "None"
 to indicate that you received no help from other people other than
 the course instructors.
 
-[Enter your reply here.]
+Raluca (TA): helped us understand endpoints and AJAX
 
 A description of the written sources of information other than the
 lecture material that you used while doing the assignment. Your
@@ -25,7 +29,16 @@ assignment solution: sources of information." Write "None" to indicate
 that you used no written sources of information other than the lecture
  material.
 
-[Enter your reply here.]
+Python in a Nutshell (Third Edition), Alex Martelli, Anna Ravenscroft, and Steve Holden, O'Reilly, 2017.
+Flask Web Development: Developing Web Applications with Python (Second Edition), Miguel Ginberg, O'Reilly, 2018.
+argparse python documentation (https://docs.python.org/3/library/argparse.html#)
+textwrap python documentation (https://docs.python.org/3/library/textwrap.html)
+.join method (https://www.w3schools.com/python/ref_string_join.asp)
+html tables (https://www.w3schools.com/html/tryit.asp?filename=tryhtml_table3)
+Bootstrap tables (https://getbootstrap.com/docs/4.1/content/tables/)
+Bootstrap containers (https://getbootstrap.com/docs/5.0/layout/containers/)
+Mustache (https://app.studyraid.com/en/read/12632/409943/working-with-arrays-and-lists)
+
 
 A description of the help that you received from generative AI while
 doing the assignment. Your description must consist of lines of the
