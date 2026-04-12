@@ -8,8 +8,7 @@
 .bundle.min.js"> </script>
         <style>
          .header, .footer {background-color:#295078; color:white}
-         .headerlink {color:white}
-      </style>
+        </style>
     </head>
 
     <body>
@@ -21,9 +20,7 @@
                   <button class="btn-close" data-bs-dismiss="modal">
                   </button>
                </div>
-               <div class="modal-body" id="detailsModalBody">
-                  Modal body; to be replaced.
-               </div>
+               <div class="modal-body" id="detailsModalBody"></div>
                <div class="modal-footer">
                   <button class="btn btn-danger"
                      data-bs-dismiss="modal">
@@ -201,7 +198,6 @@
                 }
                 let courses = JSON.parse(this.response);
                 courses = courses[1]
-                console.log('we have courses: ', courses);
                 
                 let html = convertToHtml(courses);
                 let overviewsDiv = document.getElementById('overviewsDiv');
@@ -209,16 +205,13 @@
             }
 
             function handleModal() {
-                console.log("handle modal");
                 if (this.status !== 200) {
                     alert("Error: Failed to fetch data from server");
                     return;
                 }
-                console.log(this.response);
 
                 let details = JSON.parse(this.response);
                 details = details[1]
-                console.log('we have details: ', details);
                 
                 let html = convertToModalHtml(details);
 
@@ -231,12 +224,11 @@
 
             function handleError() {
                 alert("Error: Failed to fetch data from server");
-                }
+            }
             
             let requestOverviews = null;
             let requestDetails = null;
             function getResults() {
-                console.log('get results')
                 let deptInput = document.getElementById('deptInput');
                 let dept = deptInput.value;
                 let encodedDept = encodeURIComponent(dept);
@@ -257,11 +249,10 @@
                 if (requestOverviews !== null) {
                     requestOverviews.abort();
                 }
-                console.log("happened");
+
                 requestOverviews = new XMLHttpRequest();
                 requestOverviews.onload = handleResponse;
                 requestOverviews.onerror = handleError;
-                console.log("loaded");
                 requestOverviews.open("GET", url);
                 requestOverviews.send();
 
@@ -269,18 +260,14 @@
 
             
             function getModal(classid) {
-                console.log("classid, ", classid);
-                console.log("getModal")
                 let encodedClassId = encodeURIComponent(classid);
                 let url = '/regdetails?classid=' + encodedClassId;
                 if (requestDetails !== null) {
-                    console.log("aborted")
                     requestDetails.abort();
                 }
                 requestDetails = new XMLHttpRequest();
                 requestDetails.onload = handleModal;
                 requestDetails.onerror = handleError;
-                console.log("loaded getModal");
                 requestDetails.open("GET", url);
                 requestDetails.send();
             }

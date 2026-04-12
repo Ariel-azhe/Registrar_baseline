@@ -53,7 +53,7 @@ def search_results():
     json_doc = json.dumps(courses)
     response = flask.make_response(json_doc)
     
-    #response.header['Conent-Type'] = 'application/json'
+    response.headers['Content-Type'] = 'application/json'
     return response
 
 #-----------------------------------------------------------------------
@@ -70,14 +70,11 @@ def reg_details():
     details = database.search_details(classid)
 
     # is_int = isinstance(classid, int)
-    print("classid", classid)
-    print("details", details)
 
     # html_code = flask.send_file('index.html')
     json_doc = json.dumps(details)
     response = flask.make_response(json_doc)
-    print(response)
-    #response.header['Conent-Type'] = 'application/json'
+    response.headers['Content-Type'] = 'application/json'
     return response
 
 #-----------------------------------------------------------------------
