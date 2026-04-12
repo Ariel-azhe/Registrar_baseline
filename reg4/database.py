@@ -48,13 +48,12 @@ def escape_x(x):
 # Returned to and displayed by the webpage.
 # Returns a descriptive error message to the
 # Webpage and prints the complete error to stderr
-def search_details(args):
+def search_details(classid):
     try:
         success = True
         with sqlite3.connect(_DATABASE_URL + '?mode=ro',
                 isolation_level=None, uri=True) as connection:
             with contextlib.closing(connection.cursor()) as cursor:
-                classid = args
                 # Select the columns that should be
                 # displayed with corresponding courseids
                 table = {'classid':'', 'days':'',
@@ -69,7 +68,13 @@ def search_details(args):
                                 WHERE classid = ?
                                 ''', [classid])
                 tab = cursor.fetchall()
-                if len(tab) == 0:
+                if (classid == ''):
+                    success = False
+                    table = ''.join(('missing classid'))
+                elif (type(classid) != int):
+                    success = False
+                    table = ''.join(('non-integer classid'))
+                elif len(tab) == 0:
                     success = False
                     table = ''.join(('no class with classid ',
                                     f'{classid} exists'))
