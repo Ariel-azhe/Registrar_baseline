@@ -89,6 +89,14 @@ def main():
     request = '/regdetails?classid=99999'
     run_test(serverurl, request)
 
+    # non-int classid
+    request = '/regdetails?classid=abcd'
+    run_test(serverurl, request)
+
+    # missing
+    request = '/regdetails'
+    run_test(serverurl, request)
+
     # test for empty classid
     request = '/regdetails?classid='
     run_test(serverurl, request)

@@ -83,6 +83,15 @@ def main():
         # Add more tests here.
         run_test(server_url, browser_process, '7873')
         run_test(server_url, browser_process, '9184')
+        
+        # cross-listed
+        run_test(server_url, browser_process, '9980')
+
+        # multiple professors
+        run_test(server_url, browser_process, '7850')
+
+        # no-pre reqs
+        run_test(server_url, browser_process, '9897')
 
 if __name__ == '__main__':
     main()
