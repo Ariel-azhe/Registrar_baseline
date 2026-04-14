@@ -21,7 +21,8 @@ def index():
     return flask.send_file('index.html')
 
 #-----------------------------------------------------------------------
-@app.route('/searchresults', methods=['GET'])
+# Fetch courses to display on main page
+@app.route('/regoverviews', methods=['GET'])
 def search_results():
 
     dept = flask.request.args.get('dept')
@@ -48,17 +49,14 @@ def search_results():
               'area': area, 'title': title}
 
     courses = database.search_courses(course)
-    
-    # html_code = flask.send_file('index.html')
     json_doc = json.dumps(courses)
     response = flask.make_response(json_doc)
-    
     response.headers['Content-Type'] = 'application/json'
     return response
 
 #-----------------------------------------------------------------------
 
-# Page for class details and course details.
+# Page for fetching class details to display on modal
 @app.route('/regdetails', methods=['GET'])
 def reg_details():
     classid = flask.request.args.get('classid')
@@ -68,10 +66,6 @@ def reg_details():
     classid = classid.strip()
 
     details = database.search_details(classid)
-
-    # is_int = isinstance(classid, int)
-
-    # html_code = flask.send_file('index.html')
     json_doc = json.dumps(details)
     response = flask.make_response(json_doc)
     response.headers['Content-Type'] = 'application/json'

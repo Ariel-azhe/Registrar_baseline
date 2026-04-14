@@ -68,10 +68,10 @@ def search_details(classid):
                                 WHERE classid = ?
                                 ''', [classid])
                 tab = cursor.fetchall()
-                if (classid == ''):
+                if classid == '':
                     success = False
                     table = ''.join(('missing classid'))
-                elif (type(classid) != int):
+                elif not classid.isnumeric():
                     success = False
                     table = ''.join(('non-integer classid'))
                 elif len(tab) == 0:
@@ -153,7 +153,8 @@ def search_courses(args):
                 if len(args) == 4:
                     if dict['dept'] != '':
                         stmt_str += ' AND crosslistings.dept LIKE ? '
-                        prepare.append(f'%{dict['dept'].upper()}%')
+                        prepare.append(
+                            f'%{escape_x(dict['dept']).upper()}%')
                     if dict['coursenum'] != '':
                         stmt_str += ' AND coursenum LIKE ? '
                         prepare.append(f'%{dict['coursenum']}%')

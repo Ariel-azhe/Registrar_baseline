@@ -35,7 +35,6 @@
             <div class="row">
             <h1 style="text-align: center;">Registrar's Office: Class Search</h1>
             <!--the form for search criteria-->
-            
             <div class="container-fluid">
             <form action ="/" method="get">
                     <div class="row" style="display: flex; justify-content: center; align-items: center;">
@@ -87,7 +86,7 @@
                 let template = `
                 {{#courses}}
                     <tr>
-                        <td><button id="classidModal" onclick="getModal({{classid}})"</button>{{classid}}</td> 
+                        <td><button id="buttonclassid" onclick="getModal({{classid}})"</button>{{classid}}</td> 
                         <td>{{dept}}</td> 
                         <td>{{coursenum}}</td>
                         <td>{{area}}</td> 
@@ -203,10 +202,8 @@
                 }
                 else
                 {
-                    console.error('error')
-                }
-                console.log('we have courses: ', courses);
-                
+                    alert(courses[1])
+                }                
                 let html = convertToHtml(courses);
                 let overviewsDiv = document.getElementById('overviewsDiv');
                 overviewsDiv.innerHTML = html;
@@ -225,13 +222,7 @@
                 }
                 else
                 {
-                    console.log("error is")
-                    /*
-                    let errorRequest = new XMLHttpRequest();
-                    errorRequest.open("POST", url);
-                    errorRequest.setRequestHeader("Content-Type", "application/json");
-                    errorRequest.send(details[1]);
-                    */
+                    alert(details[1])
                 }
                 
                 let html = convertToModalHtml(details);
@@ -266,18 +257,15 @@
                 let title = titleInput.value;
                 let encodedTitle = encodeURIComponent(title);
 
-                let url = '/searchresults?dept=' + encodedDept + "&coursenum=" + encodedCourseNum + "&area=" + encodedArea + "&title=" + encodedTitle;
+                let url = '/regoverviews?dept=' + encodedDept + "&coursenum=" + encodedCourseNum + "&area=" + encodedArea + "&title=" + encodedTitle;
                 if (requestOverviews !== null) {
                     requestOverviews.abort();
                 }
-
-                
                 requestOverviews = new XMLHttpRequest();
                 requestOverviews.onload = handleResponse;
                 requestOverviews.onerror = handleError;
                 requestOverviews.open("GET", url);
                 requestOverviews.send();
-
             }
 
             
@@ -314,10 +302,9 @@
                 let titleInput = document.getElementById('titleInput');
                 titleInput.addEventListener('input', debouncedGetResults);
 
-                let classidModal = document.getElementById('classidModal');
-                classidModal.addEventListener('click', getModal);
+                let buttonclassid= document.getElementById('buttonclassid');
+                buttonclassid.addEventListener('click', getModal);
             }
-
             document.addEventListener('DOMContentLoaded', setup);
             </script>
     </body>

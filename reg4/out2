@@ -1,0 +1,46 @@
+------------------------------------------------------------------------
+Class Id	8321
+Days	TTh
+Start time	11:00 AM
+End time	12:20 PM
+Building	FRIEN
+Room	006
+Course Id	3672
+Dept and Number	COS 333
+Area	
+Title	Advanced C%Science Programming Techniques
+Description	This is a course about the practice of programming. Programming is more than just writing code. Programmers must also assess tradeoffs, choose among design alternatives, debug and test, improve performance, and maintain software written by themselves & others. At the same time, they must be concerned with compatibility, robustness, and reliability, while meeting specifications. Students will have the opportunity to develop these skills by working on their own code and in group projects.
+Prerequisites	COS 217 and COS 226.
+Professor	Brian W. Kernighan
+------------------------------------------------------------------------
+Class Id	7873
+Days	MW
+Start time	10:00 AM
+End time	10:50 AM
+Building	BURRH
+Room	219
+Course Id	3478
+Dept and Number	ANT 206
+Dept and Number	EEB 306
+Dept and Number	GEO 208
+Area	EC
+Title	Human Evolution
+Description	An investigation of the evidence and background of human evolution. Emphasis will be placed on the examination of the fossil and other evidence for human evolution and its functional and behavioral implications.
+Prerequisites	
+Professor	Alan E. Mann
+Professor	Janet M. Monge
+------------------------------------------------------------------------
+Class Id	9184
+Days	TTh
+Start time	09:00 AM
+End time	10:20 AM
+Building	EQUAD
+Room	D221
+Course Id	4090
+Dept and Number	APC 506
+Dept and Number	MAE 502
+Area	
+Title	Mathematical Methods of Engineering Analysis II
+Description	A complementary presentation of theory, analytical methods, and numerical methods. The objective is to impart a set of capabilities commonly used in the research areas represented in the Department and more broadly in engineering and the physical and biological sciences. Standard computational packages will be made available in the courses, and assignments will be designed to use them. Topics will include Complex variables, PDE, Fourier and Laplace Transforms, and a brief introduction to numerical methods.
+Prerequisites	
+Professor	Edgar Y. Choueiri
